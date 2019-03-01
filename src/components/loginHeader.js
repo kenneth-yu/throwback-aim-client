@@ -1,10 +1,10 @@
 import React from 'react'
 
-const Title = (props) => {
+const LoginHeader = (props) => {
   const {chatName} = props;
   return (
-    <div className="header">
-      {chatName} - Instant Message
+    <div className="loginHeader">
+      {chatName}
       <ul className="header__links">
         <li className="header__minimize">_</li>
         <li className="header__maximize">[]</li>
@@ -14,4 +14,4 @@ const Title = (props) => {
   );
 }
 
-export default Title
+export default LoginHeader

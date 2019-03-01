@@ -28,11 +28,10 @@ button:active {
   border-top: 3px solid #848484;
 }
 
-.instant-messenger {
-  width: 500px;
+.instant-messenger{
+  width: 250px;
   border: 1px solid gray;
   background: #d6d6ce;
-  margin: 50px 0 20px 100px;
   position: relative;
   padding: 1px;
   box-shadow: 2px 2px 2px #424242;
@@ -42,7 +41,28 @@ button:active {
   border-bottom: 1px solid #848484;
 }
 
-.header {
+.loginLogo{
+  display:block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.instant-messenger-chat {
+  width: 500px;
+  border: 1px solid gray;
+  background: #d6d6ce;
+  /* margin: 150px 0 20px 200px; */
+  position: relative;
+  padding: 1px;
+  box-shadow: 2px 2px 2px #424242;
+  border-top: 1px solid white;
+  border-left: 1px solid white;
+  border-right: 1px solid #848484;
+  border-bottom: 1px solid #848484;
+}
+
+.chatHeader {
+  width:500px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -52,6 +72,19 @@ button:active {
   height: 35px;
   color: #fff;
 }
+
+.loginHeader {
+  width:250px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 5px;
+  background: #08216b;
+  background: linear-gradient(to right, #08216b, #a5c6ef);
+  height: 35px;
+  color: #fff;
+}
+
 .header__links {
   display: flex;
   list-style: none;

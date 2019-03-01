@@ -2,13 +2,15 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import './Chat.css';
+import InstantMessengerChat from './containers/InstantMessengerChat'
 import InstantMessenger from './containers/InstantMessenger'
 
 class App extends Component {
   render() {
     return (
       <div>
-      <InstantMessenger />
+      <InstantMessenger/>
+      <InstantMessengerChat/>
       </div>
     )
   }
