@@ -3,6 +3,7 @@ import LoginHeader from '../components/loginHeader'
 import LoginLogo from '../components/loginLogo'
 import ReactDOM from 'react-dom';
 import Draggable from 'react-draggable';
+import InstantMessengerBottom from './InstantMessengerBottom'
 
 
 class InstantMessenger extends React.Component{
@@ -23,6 +24,7 @@ class InstantMessenger extends React.Component{
           </div>
           <div className="instant-messenger">
             <LoginLogo/>
+            <InstantMessengerBottom/>
           </div>
         </div>
       </Draggable>

@@ -47,6 +47,18 @@ button:active {
   margin-right: auto;
 }
 
+.signinform{
+  width: 240px;
+  height: 20px;
+  display:block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.signonBtn{
+  float: right;
+}
+
 .instant-messenger-chat {
   width: 500px;
   border: 1px solid gray;
@@ -62,7 +74,7 @@ button:active {
 }
 
 .chatHeader {
-  width:500px;
+  width:494px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -74,7 +86,7 @@ button:active {
 }
 
 .loginHeader {
-  width:250px;
+  width:245px;
   display: flex;
   justify-content: space-between;
   align-items: center;
