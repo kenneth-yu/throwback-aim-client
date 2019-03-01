@@ -1,0 +1,209 @@
+html,
+body {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-family: 'Arial';
+}
+
+body {
+  background: url("https://edge.alluremedia.com.au/m/g/2014/03/bliss-720.jpg");
+  background-size: cover;
+  background-position: left center;
+  background-repeat: no-repeat;
+}
+
+button {
+  cursor: pointer;
+}
+button:focus {
+  outline: none;
+}
+button:active {
+  border-bottom: 3px solid #f4f4f4;
+  border-right: 3px solid #f4f4f4;
+  border-left: 3px solid #848484;
+  border-top: 3px solid #848484;
+}
+
+.instant-messenger {
+  width: 500px;
+  border: 1px solid gray;
+  background: #d6d6ce;
+  margin: 50px 0 20px 100px;
+  position: relative;
+  padding: 1px;
+  box-shadow: 2px 2px 2px #424242;
+  border-top: 1px solid white;
+  border-left: 1px solid white;
+  border-right: 1px solid #848484;
+  border-bottom: 1px solid #848484;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 5px;
+  background: #08216b;
+  background: linear-gradient(to right, #08216b, #a5c6ef);
+  height: 35px;
+  color: #fff;
+}
+.header__links {
+  display: flex;
+  list-style: none;
+}
+.header__minimize, .header__maximize, .header__close {
+  margin: 0 2px;
+  width: 25px;
+  height: 25px;
+  color: black;
+  font-weight: 700;
+  background: #d6d6ce;
+  font-size: 20px;
+  border-top: 1px solid white;
+  border-left: 1px solid white;
+  border-right: 1px solid #848484;
+  border-bottom: 1px solid #848484;
+  box-shadow: 1px 1px 1px #424242;
+  text-align: center;
+  line-height: 25px;
+}
+.header__minimize:hover, .header__maximize:hover, .header__close:hover {
+  cursor: pointer;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav__list {
+  margin: 0;
+  padding: 5px 0;
+  list-style: none;
+  display: flex;
+}
+.nav__item {
+  padding: 0 5px;
+  cursor: pointer;
+}
+.nav__warning-level {
+  padding-right: 5px;
+}
+
+.message-list {
+  width: 100%;
+  overflow: hidden;
+  padding: 5px;
+  box-sizing: border-box;
+}
+.message-list__container {
+  width: 100%;
+  height: 200px;
+  padding: 5px;
+  box-sizing: border-box;
+  overflow-y: scroll;
+  word-wrap: word-break;
+  word-break: break-all;
+  background: #fff;
+  border-bottom: 3px solid #f4f4f4;
+  border-right: 3px solid #f4f4f4;
+  border-left: 3px solid #848484;
+  border-top: 3px solid #848484;
+}
+
+.message-item {
+  display: flex;
+  padding: 5px 0;
+}
+.message-item--other .message-item__screenname {
+  color: red;
+}
+.message-item__screenname {
+  margin-right: 3px;
+  font-weight: bold;
+}
+
+.message-form {
+  width: 100%;
+  overflow: hidden;
+  padding: 5px;
+  box-sizing: border-box;
+}
+.message-form__textarea {
+  width: 100%;
+  height: 80px;
+  padding: 5px;
+  box-sizing: border-box;
+  resize: none;
+  font-size: 16px;
+  border-bottom: 3px solid #f4f4f4;
+  border-right: 3px solid #f4f4f4;
+  border-left: 3px solid #848484;
+  border-top: 3px solid #848484;
+}
+.message-form__textarea:focus {
+  outline: none;
+}
+.message-form__actions {
+  display: flex;
+  padding: 5px 0;
+  flex-direction: row-reverse;
+}
+.message-form__submit {
+  background-image: url("./img/submitBtn.png");
+  width: 65px;
+  height: 65px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #ECEAD8;
+  border-top: 3px solid #f4f4f4;
+  border-left: 3px solid #f4f4f4;
+  border-right: 3px solid #848484;
+  border-bottom: 3px solid #848484;
+  cursor: pointer;
+}
+.message-form__submit--disabled {
+  -webkit-filter: grayscale(100%);
+  filter: gray;
+}
+.message-form__submit:active {
+  border-bottom: 3px solid #f4f4f4;
+  border-right: 3px solid #f4f4f4;
+  border-left: 3px solid #848484;
+  border-top: 3px solid #848484;
+}
+
+.customize-row {
+  display: flex;
+  align-items: center;
+  margin: 5px;
+  padding: 3px 100px 3px 1px;
+  border: 2px solid #848484;
+  box-shadow: inset 2px 2px 0 0 #f4f4f4;
+}
+.customize-row__set {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  height: 30px;
+  border-left: 1px solid white;
+  border-right: 1px solid #848484;
+}
+.customize-row__set:last-of-type {
+  border-right: none;
+}
+.customize-row__set:first-of-type {
+  border-left: none;
+}
+.customize-row__button {
+  height: 100%;
+  background: none;
+  padding: 0 12px;
+  border: 3px solid transparent;
+  box-shadow: none;
+}
