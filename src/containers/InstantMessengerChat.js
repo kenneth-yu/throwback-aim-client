@@ -44,14 +44,12 @@ class InstantMessengerChat extends React.Component {
         onStart={this.handleStart}
         onDrag={this.handleDrag}
         onStop={this.handleStop}>
-        <div>
+        <div className="instant-messenger-chat">
           <div className="handle"><ChatHeader chatName={chatName} /></div>
-            <div className="instant-messenger-chat">
             <Navbar chatName={chatName} />
             <MessageList messageData={data} screenName={screenName} chatName={chatName}/>
             <CustomizeRow />
             <MessageForm addedMessage={this.addedMessage} onChange={this.handleChange} value={value}/>
-            </div>
         </div>
       </Draggable>
     );

@@ -22,7 +22,7 @@ const CustomizeRow = (props) => {
       <div className='customize-row__set'>
         <button className='customize-row__button link-text'>link</button>
         <button className="customize-row__button">
-          <img src="http://www.jesush.com/wp-content/uploads/2008/07/happy10.gif" />
+          <img alt="" src="http://www.jesush.com/wp-content/uploads/2008/07/happy10.gif" />
         </button>
       </div>
     </div>

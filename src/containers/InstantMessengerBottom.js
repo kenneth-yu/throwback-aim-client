@@ -9,7 +9,7 @@ class InstantMessengerBottom extends React.Component{
       <div className="instant-messenger"><br/>
       ScreenName:<br/> <input className="signinform" type="text" name="screenname"/>
       <a href="https://www.w3schools.com">Get a Screen Name</a><br/>
-      Password: <br/> <input className="signinform" type="text" name="password"/>
+      Password: <br/> <input className="signinform" type="password" name="password"/>
       <a href="https://www.w3schools.com">Forgot Password?</a><br/>
       <input type="checkbox" name="gender" value="male" /> Save Password
       <input type="checkbox" name="gender" value="male" /> Auto-login

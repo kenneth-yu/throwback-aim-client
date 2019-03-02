@@ -18,14 +18,10 @@ class InstantMessenger extends React.Component{
         onStart={this.handleStart}
         onDrag={this.handleDrag}
         onStop={this.handleStop}>
-        <div>
-          <div className="handle">
-            <LoginHeader chatName="Sign On"/>
-          </div>
-          <div className="instant-messenger">
+        <div className="instant-messenger">
+          <div className="handle"><LoginHeader chatName="Sign On"/></div>
             <LoginLogo/>
             <InstantMessengerBottom/>
-          </div>
         </div>
       </Draggable>
     );

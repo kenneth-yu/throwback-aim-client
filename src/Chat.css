@@ -60,10 +60,10 @@ button:active {
 }
 
 .instant-messenger-chat {
+  display:inline-block;
   width: 500px;
   border: 1px solid gray;
   background: #d6d6ce;
-  /* margin: 150px 0 20px 200px; */
   position: relative;
   padding: 1px;
   box-shadow: 2px 2px 2px #424242;
@@ -99,6 +99,7 @@ button:active {
 
 .header__links {
   display: flex;
+  /* float:right; */
   list-style: none;
 }
 .header__minimize, .header__maximize, .header__close {
