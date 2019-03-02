@@ -1,5 +1,6 @@
 import React from 'react'
 import SendMessage from '../sounds/imsend.wav'
+import { API_ROOT, HEADERS } from '../constants'
 
 
 class MessageForm extends React.Component {
@@ -7,6 +8,14 @@ class MessageForm extends React.Component {
     super(props);
     this.state = { sendMessageSound: false };
     this.audio = new Audio(SendMessage)
+  }
+
+  fetchWS(route, dataObj){
+    fetch(`${API_ROOT}/${route}`, {
+      method: 'POST',
+      headers: HEADERS,
+      body: JSON.stringify(dataObj)
+    })
   }
 
   render(){

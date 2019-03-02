@@ -16,7 +16,6 @@ const InstantMessengerForm = ({username, password, authenticateUser, onChange, r
         <img alt="" src={Help} height="12%" width="12%"/>
         <img alt="" src={Setup} height="12%" width="12%"/>
         <div className="message-form__actions">
-        <button onClick={testFunction}>GET to chats</button>
         <button
         type="button"
         onClick={(e)=> {authenticateUser(e, username, password)}}

@@ -79,6 +79,7 @@ authenticateUser = (e, username, password) => {
     body: JSON.stringify({ user })
   })
   .then(resp => resp.json())
+<<<<<<< HEAD
   .then(data => {this.testFunction(data)})
     // localStorage.setItem("token", data.jwt);
     // this.setState({ user: data.user })
@@ -104,6 +105,17 @@ authenticateUser = (e, username, password) => {
   render() {
     // console.log(this.state.user)
     // console.log(HEADERS)
+=======
+  .then(data => {
+    localStorage.setItem("token", data.jwt);
+    this.setState({ user: data.user });
+    document.cookie = 'X-Authorization=' + data.jwt + '; path=/';
+  })
+}
+
+
+  render() {
+>>>>>>> c013ffd6ec645c191861720369520849ffd03449
     return (
       <div>
       <Switch>
