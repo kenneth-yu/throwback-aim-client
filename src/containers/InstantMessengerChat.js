@@ -12,7 +12,7 @@ class InstantMessengerChat extends React.Component {
     super(props);
 
     this.state = {
-      chatName: "Jerold", //GET this information
+      chatName: "SmarterChild", //GET this information
       screenName: "AorKennyKiller", //GET this information
       data: [],
       value: "",
@@ -37,7 +37,7 @@ class InstantMessengerChat extends React.Component {
     return (
       <Draggable
         handle=".handle"
-        defaultPosition={{x:300, y:-100}}
+        defaultPosition={{x:300, y:-300}}
         position={null}
         grid={[25, 25]}
         scale={1}

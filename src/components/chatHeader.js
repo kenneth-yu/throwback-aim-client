@@ -4,7 +4,7 @@ const ChatHeader = (props) => {
   const {chatName} = props;
   return (
     <div className="chatHeader">
-      {chatName}
+      {chatName} - Instant Message
       <ul className="header__links">
         <li className="header__minimize">_</li>
         <li className="header__maximize">[]</li>

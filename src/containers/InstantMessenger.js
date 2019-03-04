@@ -7,6 +7,33 @@ import InstantMessengerBottom from './InstantMessengerBottom'
 
 
 class InstantMessenger extends React.Component{
+  state ={
+    username: "",
+    password: ""
+  }
+
+  authenticateUser = (e, val) => {
+    e.preventDefault();
+    //Authenticate User Login Here
+    console.log("authentication not set up")
+    console.log("username", this.state.username)
+    console.log("password", this.state.password)
+  };
+
+  handleChange = (event) => {
+    // console.log(event.target)
+    if(event.target.name ==="screenname"){
+      this.setState({
+        username: event.target.value
+      });
+    }
+    else if(event.target.name ==="password"){
+      this.setState({
+        password: event.target.value
+      })
+    }
+  };
+
   render(){
     return (
       <Draggable
@@ -21,7 +48,10 @@ class InstantMessenger extends React.Component{
         <div className="instant-messenger">
           <div className="handle"><LoginHeader chatName="Sign On"/></div>
             <LoginLogo/>
-            <InstantMessengerBottom/>
+            <InstantMessengerBottom authenticateUser={this.authenticateUser}
+            onChange={this.handleChange}
+            username={this.state.username}
+            password={this.state.password}/>
         </div>
       </Draggable>
     );
