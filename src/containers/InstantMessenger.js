@@ -37,7 +37,7 @@ class InstantMessenger extends React.Component{
     return (
       <Draggable
         handle=".handle"
-        defaultPosition={{x: 1200, y:-500}}
+        defaultPosition={{x: 1200, y:100}}
         position={null}
         grid={[25, 25]}
         scale={1}
@@ -45,7 +45,7 @@ class InstantMessenger extends React.Component{
         onDrag={this.handleDrag}
         onStop={this.handleStop}>
         <div className="instant-messenger">
-          <div className="handle"><LoginHeader chatName="Sign On"/></div>
+          <div className="handle"><LoginHeader showHandler={this.props.showHandler} chatName="Sign On"/></div>
             <LoginLogo/>
             <InstantMessengerForm authenticateUser={this.authenticateUser}
             onChange={this.handleChange}

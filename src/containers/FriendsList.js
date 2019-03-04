@@ -10,11 +10,25 @@ import Search from '../img/search.png'
 
 
 class FriendsList extends React.Component{
+  state = {
+    friendsCategories: [],
+    friendsList: [],
+  }
+
+  getFriendsList = () =>{
+    fetch('http://localhost:3001/user')
+    .then(res => res.json())
+    .then(data => this.setState({
+      friendsCategories: data.categories,
+      friendsList: data.friends
+    }))
+  }
+
   render() {
    return (
      <Draggable
        handle=".handle"
-       defaultPosition={{x: 100, y: 100}}
+       defaultPosition={{x: 1200, y: 100}}
        position={null}
        grid={[25, 25]}
        scale={1}
@@ -22,7 +36,7 @@ class FriendsList extends React.Component{
        onDrag={this.handleDrag}
        onStop={this.handleStop}>
        <div className="instant-messenger">
-         <div className="handle"><LoginHeader chatName="Friends List"/></div>
+         <div className="handle"><LoginHeader showHandler={this.props.showHandler} chatName="Friends List"/></div>
          <FriendsListNavbar/>
          <FriendsListLogo/>
          <FriendsListBox/>

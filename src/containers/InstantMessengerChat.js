@@ -32,11 +32,11 @@ class InstantMessengerChat extends React.Component {
   };
 
   render() {
-    const { data, chatName, screenName, value } = this.state;
+    const { data, chatName, screenName, value} = this.state;
     return (
       <Draggable
         handle=".handle"
-        defaultPosition={{x:500, y:-1000}}
+        defaultPosition={{x:500, y:-400}}
         position={null}
         grid={[25, 25]}
         scale={1}
@@ -44,8 +44,8 @@ class InstantMessengerChat extends React.Component {
         onDrag={this.handleDrag}
         onStop={this.handleStop}>
         <div className="instant-messenger-chat">
-          <div className="handle"><ChatHeader chatName={chatName} /></div>
-            <Navbar chatName={chatName} />
+          <div className="handle"><ChatHeader showHandler={this.props.showHandler} chatName={chatName} /></div>
+            <Navbar  chatName={chatName} />
             <MessageList messageData={data} screenName={screenName} chatName={chatName}/>
             <CustomizeRow />
             <MessageForm addedMessage={this.addedMessage} onChange={this.handleChange} value={value}/>
