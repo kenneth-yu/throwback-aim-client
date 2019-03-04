@@ -3,10 +3,10 @@ import Help from '../img/help.png'
 import Setup from '../img/setup.png'
 // import Signon from '../img/signon.png'
 
-const InstantMessengerBottom = ({username, password, authenticateUser, onChange}) =>{
+const InstantMessengerForm = ({username, password, authenticateUser, onChange}) =>{
     const disabledClass = !username.length && !password.length ? 'message-form__submit--disabled' : null;
     return(
-      <form className="instant-messenger-bottom" onSubmit={(e)=> {authenticateUser(e, username, password)}}>
+      <form className="instant-messenger-form" onSubmit={(e)=> {authenticateUser(e, username, password)}}>
         ScreenName:<br/> <input className="signinform" type="text" name="screenname" value={username} onChange={onChange}/>
         <a href="http://localhost:3000/signup">Get a Screen Name</a><br/>
         Password: <br/> <input className="signinform" type="password" name="password" value={password} onChange={onChange}/>
@@ -26,4 +26,4 @@ const InstantMessengerBottom = ({username, password, authenticateUser, onChange}
     )
 }
 
-export default InstantMessengerBottom
+export default InstantMessengerForm

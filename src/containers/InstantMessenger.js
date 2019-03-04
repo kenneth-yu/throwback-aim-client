@@ -2,7 +2,7 @@ import React from 'react'
 import LoginHeader from '../components/loginHeader'
 import LoginLogo from '../components/loginLogo'
 import Draggable from 'react-draggable';
-import InstantMessengerBottom from './InstantMessengerBottom'
+import InstantMessengerForm from '../components/InstantMessengerForm'
 
 
 class InstantMessenger extends React.Component{
@@ -37,7 +37,7 @@ class InstantMessenger extends React.Component{
     return (
       <Draggable
         handle=".handle"
-        defaultPosition={{x: 1200, y:100}}
+        defaultPosition={{x: 1200, y:-500}}
         position={null}
         grid={[25, 25]}
         scale={1}
@@ -47,7 +47,7 @@ class InstantMessenger extends React.Component{
         <div className="instant-messenger">
           <div className="handle"><LoginHeader chatName="Sign On"/></div>
             <LoginLogo/>
-            <InstantMessengerBottom authenticateUser={this.authenticateUser}
+            <InstantMessengerForm authenticateUser={this.authenticateUser}
             onChange={this.handleChange}
             username={this.state.username}
             password={this.state.password}/>

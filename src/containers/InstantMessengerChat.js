@@ -36,7 +36,7 @@ class InstantMessengerChat extends React.Component {
     return (
       <Draggable
         handle=".handle"
-        defaultPosition={{x:300, y:-300}}
+        defaultPosition={{x:500, y:-1000}}
         position={null}
         grid={[25, 25]}
         scale={1}
