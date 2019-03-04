@@ -42,14 +42,33 @@ button:active {
   border-bottom: 1px solid #848484;
 }
 
+.instant-messenger-bottom{
+  width: 245px;
+  border: 1px solid gray;
+  background: #d6d6ce;
+  position: relative;
+  padding: 1px;
+  border-left: 1px solid white;
+  border-right: 1px solid white;
+}
+
 .loginLogo{
   display:block;
   margin-left: auto;
   margin-right: auto;
+  padding-top: 5px;
+  padding-bottom:5px;
+}
+
+.friends-list-logo{
+  display:block;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom:9px;
 }
 
 .signinform{
-  width: 240px;
+  width: 235px;
   height: 20px;
   display:block;
   margin-left: auto;
@@ -74,7 +93,7 @@ button:active {
 }
 
 .chatHeader {
-  width:494px;
+  width:490px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -86,7 +105,7 @@ button:active {
 }
 
 .loginHeader {
-  width:245px;
+  width:239px;
   display: flex;
   justify-content: space-between;
   align-items: center;

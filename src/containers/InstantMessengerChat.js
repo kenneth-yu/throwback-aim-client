@@ -4,7 +4,6 @@ import ChatHeader from '../components/chatHeader'
 import MessageForm from '../components/MessageForm'
 import MessageList from '../components/MessageList'
 import CustomizeRow from '../components/chatCustomize'
-import ReactDOM from 'react-dom';
 import Draggable from 'react-draggable';
 
 class InstantMessengerChat extends React.Component {

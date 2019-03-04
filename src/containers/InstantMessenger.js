@@ -1,7 +1,6 @@
 import React from 'react'
 import LoginHeader from '../components/loginHeader'
 import LoginLogo from '../components/loginLogo'
-import ReactDOM from 'react-dom';
 import Draggable from 'react-draggable';
 import InstantMessengerBottom from './InstantMessengerBottom'
 
