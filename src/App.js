@@ -7,8 +7,8 @@ import FriendsList from './containers/FriendsList'
 
 class App extends Component {
   state = {
-    showFriendsList: false,
     showInstantMessenger: true,
+    showFriendsList: false,
     showInstantMessengerChat: true
   }
 
