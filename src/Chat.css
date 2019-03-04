@@ -297,3 +297,23 @@ button:active {
 .search-btn{
   float: right;
 }
+.categories {
+    margin: -1em;
+    padding: 0 1em;
+    list-style: none;
+}
+.friends:before {
+    content: "";
+    border-color: transparent #111;
+    border-style: solid;
+    border-width: 0.35em 0 0.35em 0.45em;
+    display: block;
+    height: 0;
+    width: 0;
+    left: -1em;
+    top: 0.9em;
+    position: relative;
+}
+.friends-li{
+  list-style:none;
+}

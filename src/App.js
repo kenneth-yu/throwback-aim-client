@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Route, Switch } from "react-router-dom";
 import './App.css';
 import './Chat.css';
 import InstantMessengerChat from './containers/InstantMessengerChat'
@@ -28,11 +29,13 @@ class App extends Component {
   }
 
   newChatHandler = (friendObj) =>{
+    this.showHandler()
     this.setState({
-      showInstantMessengerChat: !this.state.showInstantMessengerChat,
-      clickedFriend: friendObj
+      clickedFriend: friendObj,
+      showInstantMessengerChat: !this.state.showInstantMessengerChat
     })
   }
+
 
   render() {
     return (

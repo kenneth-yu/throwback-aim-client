@@ -19,7 +19,7 @@ class FriendsListBox extends React.Component{
     let categoriesList = this.state.categories.map(oneCategory => <FriendsCategories key={oneCategory.name} newChatHandler={this.props.newChatHandler} category={oneCategory}/>)
     return(
       <div className="friends-list-box">
-        <ul>
+        <ul className="categories">
           {categoriesList}
         </ul>
       </div>
