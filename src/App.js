@@ -9,7 +9,8 @@ class App extends Component {
   state = {
     showInstantMessenger: true,
     showFriendsList: false,
-    showInstantMessengerChat: true
+    showInstantMessengerChat: false,
+    clickedFriend:{}
   }
 
   showHandler = (chatName) =>{
@@ -26,11 +27,20 @@ class App extends Component {
     }
   }
 
+  newChatHandler = (friendObj) =>{
+    this.setState({
+      showInstantMessengerChat: !this.state.showInstantMessengerChat,
+      clickedFriend: friendObj
+    })
+  }
+
   render() {
     return (
       <div>
-      {this.state.showInstantMessenger ? <InstantMessenger showHandler={this.showHandler}/> : <FriendsList showHandler={this.showHandler} />}
-      {this.state.showInstantMessengerChat ? <InstantMessengerChat showHandler={this.showHandler}/> : null}
+      {this.state.showInstantMessenger ?
+      <InstantMessenger showHandler={this.showHandler}/> :
+      <FriendsList newChatHandler={this.newChatHandler} showHandler={this.showHandler} />}
+      {this.state.showInstantMessengerChat ? <InstantMessengerChat clickedFriend={this.state.clickedFriend} showHandler={this.showHandler}/> : null}
       </div>
     )
   }

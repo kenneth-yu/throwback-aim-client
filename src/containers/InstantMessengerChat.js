@@ -9,9 +9,8 @@ import Draggable from 'react-draggable';
 class InstantMessengerChat extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = {
-      chatName: "SmarterChild", //GET this information
+      chatName: this.props.clickedFriend.name, //GET this information
       screenName: "AorKennyKiller", //GET this information
       data: [],
       value: "",
