@@ -5,6 +5,8 @@ import MessageForm from '../components/MessageForm'
 import MessageList from '../components/MessageList'
 import CustomizeRow from '../components/chatCustomize'
 import Draggable from 'react-draggable';
+import { ActionCable } from 'react-actioncable-provider';
+import { API_ROOT } from '../constants';
 
 class InstantMessengerChat extends React.Component {
   constructor(props) {
@@ -17,6 +19,12 @@ class InstantMessengerChat extends React.Component {
       messageId: 0
 
     };
+  }
+
+  componentDidMount() {
+    fetch(`${API_ROOT}users`)
+    .then(res => res.json())
+    .then(console.log)
   }
 
   addedMessage = (e, val) => {
