@@ -10,19 +10,6 @@ import Search from '../img/search.png'
 
 
 class FriendsList extends React.Component{
-  state = {
-    friendsCategories: [],
-    friendsList: [],
-  }
-
-  getFriendsList = () =>{
-    fetch('http://localhost:3001/user')
-    .then(res => res.json())
-    .then(data => this.setState({
-      friendsCategories: data.categories,
-      friendsList: data.friends
-    }))
-  }
 
   render() {
    return (
@@ -39,7 +26,7 @@ class FriendsList extends React.Component{
          <div className="handle"><LoginHeader showHandler={this.props.showHandler} chatName="Friends List"/></div>
          <FriendsListNavbar/>
          <FriendsListLogo/>
-         <FriendsListBox/>
+         <FriendsListBox newChatHandler={this.props.newChatHandler}/>
          <img className="new-message-btn" alt="" src={NewMessage} height="15%" width="15%"/>
          <img className="group-message-btn" alt="" src={GroupMessage} height="15%" width="15%"/>
          <img className="search-btn"alt="" src={Search} height="15%" width="15%"/>
