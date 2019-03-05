@@ -6,6 +6,7 @@ import MessageList from '../components/MessageList'
 import CustomizeRow from '../components/chatCustomize'
 import Draggable from 'react-draggable';
 
+
 class InstantMessengerChat extends React.Component {
   constructor(props) {
     super(props);
@@ -14,7 +15,7 @@ class InstantMessengerChat extends React.Component {
       screenName: "AorKennyKiller", //GET this information
       data: [],
       value: "",
-      messageId: 0
+      messageId: 0,
 
     };
   }
@@ -23,7 +24,11 @@ class InstantMessengerChat extends React.Component {
     e.preventDefault();
     const message = {text: val, id: this.state.messageId++};
     this.state.data.push(message);
-    this.setState({data: this.state.data, value: ""});
+    this.setState({
+      data: this.state.data,
+      value: ""
+    });
+
   };
 
   handleChange = (event) => {

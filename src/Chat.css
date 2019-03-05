@@ -118,7 +118,6 @@ button:active {
 
 .header__links {
   display: flex;
-  /* float:right; */
   list-style: none;
 }
 .header__minimize, .header__maximize, .header__close {
@@ -299,7 +298,7 @@ button:active {
 }
 .categories {
     margin: -1em;
-    padding: 0 1em;
+    padding: 0 1.5em;
     list-style: none;
 }
 .friends:before {
@@ -316,4 +315,5 @@ button:active {
 }
 .friends-li{
   list-style:none;
+  padding-top: 5px;
 }
