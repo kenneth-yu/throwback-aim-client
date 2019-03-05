@@ -83,18 +83,29 @@ authenticateUser = (e, username, password) => {
     localStorage.setItem("token", data.jwt);
     this.setState({ user: data.user })
   })
-  console.log(localStorage.token)
 }
+
+  testFunction = () => {
+    console.log(HEADERS)
+    fetch(`${API_ROOT}chats`, {
+      method: `GET`,
+      headers: HEADERS
+    })
+    .then(res => res.json())
+    .then(console.log)
+  }
 
 
   render() {
+    console.log(this.state.user)
+    console.log(HEADERS)
     return (
       <div>
       <Switch>
         <Route path="/signup" component={CreateUser} />
       </Switch>
       {this.state.showInstantMessenger ?
-      <InstantMessenger showHandler={this.showHandler} authenticateUser={this.authenticateUser}/> :
+      <InstantMessenger testFunction={this.testFunction} showHandler={this.showHandler} authenticateUser={this.authenticateUser}/> :
       <FriendsList newChatHandler={this.newChatHandler} showHandler={this.showHandler} />}
       {this.state.showInstantMessengerChat ? <InstantMessengerChat clickedFriend={this.state.clickedFriend} showHandler={this.showHandler}/> : null}
       </div>

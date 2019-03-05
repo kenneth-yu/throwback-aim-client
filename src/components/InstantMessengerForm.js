@@ -3,7 +3,7 @@ import Help from '../img/help.png'
 import Setup from '../img/setup.png'
 // import Signon from '../img/signon.png'
 
-const InstantMessengerForm = ({username, password, authenticateUser, onChange, redirectSignUp}) =>{
+const InstantMessengerForm = ({username, password, authenticateUser, onChange, redirectSignUp, testFunction}) =>{
     const disabledClass = !username.length && !password.length ? 'message-form__submit--disabled' : null;
     return(
       <form className="instant-messenger-form" onSubmit={(e)=> {authenticateUser(e, username, password)}}>
@@ -16,6 +16,7 @@ const InstantMessengerForm = ({username, password, authenticateUser, onChange, r
         <img alt="" src={Help} height="12%" width="12%"/>
         <img alt="" src={Setup} height="12%" width="12%"/>
         <div className="message-form__actions">
+        <button onClick={testFunction}>GET to chats</button>
         <button
         type="button"
         onClick={(e)=> {authenticateUser(e, username, password)}}
