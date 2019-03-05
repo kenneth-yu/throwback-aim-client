@@ -9,7 +9,7 @@ const InstantMessengerForm = ({username, password, authenticateUser, onChange}) 
       <form className="instant-messenger-form" onSubmit={(e)=> {authenticateUser(e, username, password)}}>
         ScreenName:<br/> <input className="signinform" type="text" name="screenname" value={username} onChange={onChange}/>
         <a href="http://localhost:3000/signup">Get a Screen Name</a><br/>
-        Password: <br/> <input className="signinform" type="password" name="password" value={password} onChange={onChange}/>
+        Password: <br/> <input className="signinform" type="current-password" name="password" value={password} onChange={onChange}/>
         <a href="http://localhost:3000/reset">Forgot Password?</a><br/>
         <input type="checkbox" name="gender" value="male" /> Save Password
         <input type="checkbox" name="gender" value="male" /> Auto-login

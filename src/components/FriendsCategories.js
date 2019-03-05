@@ -7,7 +7,7 @@ class FriendsCategories extends React.Component{
   }
 
   hideHandler = (event) => {
-    if (event.target.className==="categories"){
+    if (event.target.className==="friends"){
       this.setState({
         hidden: !this.state.hidden
       })
@@ -20,8 +20,8 @@ class FriendsCategories extends React.Component{
     let friendsList = this.props.category.friends.map(oneFriend => <Friends key={oneFriend.name} newChatHandler={this.props.newChatHandler} friend={oneFriend}/>)
 
     return(
-      <li className="categories" onClick={this.hideHandler}>
-        {this.props.category.name}
+      <li onClick={this.hideHandler}>
+        <b className="friends">{this.props.category.name} ({this.props.category.friends.length}/{this.props.category.friends.length})</b>
         {this.state.hidden ? null : <ul>{friendsList}</ul>}
       </li>
     )

@@ -8,6 +8,7 @@ import Draggable from 'react-draggable';
 import { ActionCable } from 'react-actioncable-provider';
 import { API_ROOT } from '../constants';
 
+
 class InstantMessengerChat extends React.Component {
   constructor(props) {
     super(props);
@@ -16,7 +17,7 @@ class InstantMessengerChat extends React.Component {
       screenName: "AorKennyKiller", //GET this information
       data: [],
       value: "",
-      messageId: 0
+      messageId: 0,
 
     };
   }
@@ -31,7 +32,11 @@ class InstantMessengerChat extends React.Component {
     e.preventDefault();
     const message = {text: val, id: this.state.messageId++};
     this.state.data.push(message);
-    this.setState({data: this.state.data, value: ""});
+    this.setState({
+      data: this.state.data,
+      value: ""
+    });
+
   };
 
   handleChange = (event) => {
