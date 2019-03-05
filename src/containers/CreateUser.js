@@ -15,10 +15,20 @@ class CreateUser extends React.Component{
   createUser = (e, val) => {
     e.preventDefault();
     //Authenticate User Login Here
-    console.log("authentication not set up")
-    console.log("username", this.state.username)
-    console.log("password", this.state.password)
-    this.props.history.push("/")
+    if (this.state.username && this.state.password && this.state.passwordConfirm){
+      if(this.state.password === this.state.passwordConfirm){
+        console.log("authentication not set up")
+        console.log("username", this.state.username)
+        console.log("password", this.state.password)
+        this.props.history.push("/")
+      }
+      else{
+        console.log("Password and Password Confirmation does not match!")
+      }
+    }
+    else{
+      console.log("Please Make Sure that Username, Password and Password Confirmation is filled!")
+    }
   };
 
   showHandler = () => {
