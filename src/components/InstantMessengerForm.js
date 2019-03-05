@@ -9,7 +9,7 @@ const InstantMessengerForm = ({username, password, authenticateUser, onChange, r
     return(
       <form className="instant-messenger-form" onSubmit={(e)=> {authenticateUser(e, username, password)}}>
         ScreenName:<br/><input className="signinform" type="text" name="screenname" value={username} onChange={onChange}/>
-        <span class="pseudolink" onClick={() => redirectSignUp()}>Get a Screen Name</span><br/>   
+        <span className="pseudolink" onClick={() => redirectSignUp()}>Get a Screen Name</span><br/>   
         Password: <br/> <input className="signinform" type="current-password" name="password" value={password} onChange={onChange}/>
         <a href="http://localhost:3001/reset">Forgot Password?</a><br/>
         <input type="checkbox" name="gender" value="male" /> Save Password

@@ -11,7 +11,10 @@ class FriendsListBox extends React.Component{
   }
 
   getFriendsList = () =>{
-    fetch(`${API_ROOT}users`)
+    fetch(`${API_ROOT}users`, {
+      method: `GET`,
+      headers: HEADERS
+    })
     .then(res => res.json())
     .then(data => this.setState({
       categories: data.categories,

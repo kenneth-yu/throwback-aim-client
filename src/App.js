@@ -19,15 +19,9 @@ class App extends Component {
   }
 
   componentDidMount() {
-    let token = localStorage.token;
-    console.log("local storage token",token)
     fetch(`${API_ROOT}get_user`, {
       method: `GET`,
-      headers: {
-        "content-type": "application/json",
-        accepts: "application/json",
-        Authorzation: `${token}`
-      }
+      headers: HEADERS
     })
     .then(res => res.json())
     .then(user => {

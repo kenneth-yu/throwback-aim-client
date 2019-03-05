@@ -6,7 +6,7 @@ import MessageList from '../components/MessageList'
 import CustomizeRow from '../components/chatCustomize'
 import Draggable from 'react-draggable';
 import { ActionCableConsumer } from 'react-actioncable-provider';
-import { API_ROOT } from '../constants';
+import { API_ROOT, HEADERS } from '../constants';
 
 
 class InstantMessengerChat extends React.Component {
@@ -18,12 +18,16 @@ class InstantMessengerChat extends React.Component {
       data: [],
       value: "",
       messageId: 0,
+      chats: []
 
     };
   }
 
   componentDidMount() {
-    fetch(`${API_ROOT}users`)
+    fetch(`${API_ROOT}chats`, {
+      method: `GET`,
+      headers: HEADERS
+    })
     .then(res => res.json())
     .then(console.log)
   }
@@ -41,6 +45,13 @@ class InstantMessengerChat extends React.Component {
 
   handleChange = (event) => {
     this.setState({value: event.target.value});
+  };
+
+  handleReceivedConversation = response => {
+    const { chat } = response;
+    this.setState({
+      chats: [...this.state.chats, chat]
+    });
   };
 
   render() {
@@ -61,6 +72,7 @@ class InstantMessengerChat extends React.Component {
             <MessageList messageData={data} screenName={screenName} chatName={chatName}/>
             <CustomizeRow />
             <MessageForm addedMessage={this.addedMessage} onChange={this.handleChange} value={value}/>
+
         </div>
       </Draggable>
     );
