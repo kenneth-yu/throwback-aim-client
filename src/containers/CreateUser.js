@@ -4,6 +4,7 @@ import CreateUserHeader from '../components/CreateUserHeader'
 import CreateUserNavbar from '../components/CreateUserNavbar'
 import CreateUserForm from '../components/CreateUserForm'
 import { withRouter } from 'react-router-dom'
+import { API_ROOT, HEADERS } from '../constants'
 
 class CreateUser extends React.Component{
   state ={
@@ -17,9 +18,17 @@ class CreateUser extends React.Component{
     //Authenticate User Login Here
     if (this.state.username && this.state.password && this.state.passwordConfirm){
       if(this.state.password === this.state.passwordConfirm){
-        console.log("authentication not set up")
-        console.log("username", this.state.username)
-        console.log("password", this.state.password)
+        fetch(`${API_ROOT}users`, {
+          method: `POST`,
+          headers: HEADERS,
+          body: JSON.stringify({
+            username: this.state.username,
+            password: this.state.password,
+            logged_in: true
+          })
+        })
+        .then(res => res.json())
+        .then(console.log)
         this.props.history.push("/")
       }
       else{
