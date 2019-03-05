@@ -5,7 +5,7 @@ import MessageForm from '../components/MessageForm'
 import MessageList from '../components/MessageList'
 import CustomizeRow from '../components/chatCustomize'
 import Draggable from 'react-draggable';
-import { ActionCable } from 'react-actioncable-provider';
+import { ActionCableConsumer } from 'react-actioncable-provider';
 import { API_ROOT } from '../constants';
 
 

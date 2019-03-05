@@ -16,7 +16,7 @@ class App extends Component {
     user: {}
   }
 
-  componentDidMount = () => {
+  componentDidMount() {
     let token = localStorage.token;
     fetch(`${API_ROOT}get_user`, {
       method: `GET`,
@@ -35,6 +35,7 @@ class App extends Component {
       }
     })
   }
+
 
   showHandler = (chatName) =>{
     if(chatName === "Friends List" || chatName === "Sign On") {
@@ -58,7 +59,6 @@ class App extends Component {
     })
   }
 
-<<<<<<< HEAD
   signupHandler = userInfo => {
   fetch(`${API_ROOT}users`, {
     method: "POST",
@@ -87,8 +87,7 @@ authenticateUser = (e, username, password) => {
   })
   console.log(localStorage.token)
 }
-=======
->>>>>>> 89b2b77641fd3c11f94a49edfcc7a20e4a59d6f2
+
 
   render() {
     return (
