@@ -4,6 +4,8 @@ import './Chat.css';
 import InstantMessengerChat from './containers/InstantMessengerChat'
 import InstantMessenger from './containers/InstantMessenger'
 import FriendsList from './containers/FriendsList'
+import CreateUser from './containers/CreateUser'
+import { Route, Switch } from "react-router-dom";
 
 class App extends Component {
   state = {
@@ -39,6 +41,9 @@ class App extends Component {
   render() {
     return (
       <div>
+      <Switch>
+        <Route path="/signup" component={CreateUser} />
+      </Switch>
       {this.state.showInstantMessenger ?
       <InstantMessenger showHandler={this.showHandler}/> :
       <FriendsList newChatHandler={this.newChatHandler} showHandler={this.showHandler} />}

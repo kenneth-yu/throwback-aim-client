@@ -3,9 +3,12 @@ import LoginHeader from '../components/loginHeader'
 import LoginLogo from '../components/loginLogo'
 import Draggable from 'react-draggable';
 import InstantMessengerForm from '../components/InstantMessengerForm'
+import { withRouter } from 'react-router-dom'
+
 
 
 class InstantMessenger extends React.Component{
+
   state ={
     username: "",
     password: ""
@@ -18,6 +21,10 @@ class InstantMessenger extends React.Component{
     console.log("username", this.state.username)
     console.log("password", this.state.password)
   };
+
+  redirectSignUp = () =>{
+    this.props.history.push("/signup")
+  }
 
   handleChange = (event) => {
     // console.log(event.target)
@@ -34,6 +41,7 @@ class InstantMessenger extends React.Component{
   };
 
   render(){
+    console.log(this.props.history)
     return (
       <Draggable
         handle=".handle"
@@ -50,7 +58,8 @@ class InstantMessenger extends React.Component{
             <InstantMessengerForm authenticateUser={this.authenticateUser}
             onChange={this.handleChange}
             username={this.state.username}
-            password={this.state.password}/>
+            password={this.state.password}
+            redirectSignUp={this.redirectSignUp}/>
         </div>
       </Draggable>
     );
@@ -58,4 +67,4 @@ class InstantMessenger extends React.Component{
 
 }
 
-export default InstantMessenger
+export default withRouter(InstantMessenger)
