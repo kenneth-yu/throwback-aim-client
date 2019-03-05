@@ -47,7 +47,7 @@ class InstantMessenger extends React.Component{
         <div className="instant-messenger">
           <div className="handle"><LoginHeader showHandler={this.props.showHandler} chatName="Sign On"/></div>
             <LoginLogo/>
-            <InstantMessengerForm authenticateUser={this.props.authenticateUser}
+            <InstantMessengerForm testFunction={this.props.testFunction} authenticateUser={this.props.authenticateUser}
             onChange={this.handleChange}
             username={this.state.username}
             password={this.state.password}
