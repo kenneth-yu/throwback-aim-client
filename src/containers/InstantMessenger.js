@@ -11,13 +11,6 @@ class InstantMessenger extends React.Component{
     password: ""
   }
 
-  authenticateUser = (e, val) => {
-    e.preventDefault();
-    //Authenticate User Login Here
-    console.log("authentication not set up")
-    console.log("username", this.state.username)
-    console.log("password", this.state.password)
-  };
 
   handleChange = (event) => {
     // console.log(event.target)
@@ -47,7 +40,7 @@ class InstantMessenger extends React.Component{
         <div className="instant-messenger">
           <div className="handle"><LoginHeader showHandler={this.props.showHandler} chatName="Sign On"/></div>
             <LoginLogo/>
-            <InstantMessengerForm authenticateUser={this.authenticateUser}
+            <InstantMessengerForm authenticateUser={this.props.authenticateUser}
             onChange={this.handleChange}
             username={this.state.username}
             password={this.state.password}/>

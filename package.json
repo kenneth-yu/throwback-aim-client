@@ -7,6 +7,7 @@
     "react-actioncable-provider": "^2.0.0",
     "react-dom": "^16.8.3",
     "react-draggable": "^3.2.1",
+    "react-router-dom": "^4.3.1",
     "react-scripts": "2.1.5",
     "react-sound": "^1.2.0"
   },
