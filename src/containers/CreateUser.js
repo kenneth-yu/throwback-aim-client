@@ -22,9 +22,11 @@ class CreateUser extends React.Component{
           method: `POST`,
           headers: HEADERS,
           body: JSON.stringify({
-            username: this.state.username,
-            password: this.state.password,
-            logged_in: true
+            user: {
+              username: this.state.username,
+              password: this.state.password,
+              logged_in: true
+            }
           })
         })
         .then(res => res.json())

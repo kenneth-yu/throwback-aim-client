@@ -20,6 +20,7 @@ class App extends Component {
 
   componentDidMount() {
     let token = localStorage.token;
+    console.log("local storage token",token)
     fetch(`${API_ROOT}get_user`, {
       method: `GET`,
       headers: {
@@ -37,6 +38,7 @@ class App extends Component {
       }
     })
   }
+
 
 
   showHandler = (chatName) =>{
