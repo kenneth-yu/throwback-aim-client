@@ -3,7 +3,6 @@ import Draggable from 'react-draggable';
 import CreateUserHeader from '../components/CreateUserHeader'
 import CreateUserNavbar from '../components/CreateUserNavbar'
 import CreateUserForm from '../components/CreateUserForm'
-import { withRouter } from 'react-router-dom'
 import { API_ROOT, HEADERS } from '../constants'
 
 class CreateUser extends React.Component{
@@ -11,6 +10,17 @@ class CreateUser extends React.Component{
     username: "",
     password: "",
     passwordConfirm: ""
+  }
+
+  accountCreatedSuccess = (data) =>{
+    console.log(data)
+    if (data.status === 500){
+      window.alert("Account was NOT created Successfully! Please Try Again!")
+    }
+    else{
+      window.alert("Account Successfully Created!")
+      this.props.history.push("/")
+    }
   }
 
   createUser = (e, val) => {
@@ -25,20 +35,20 @@ class CreateUser extends React.Component{
             user: {
               username: this.state.username,
               password: this.state.password,
-              logged_in: true
+              logged_in: false
             }
           })
         })
         .then(res => res.json())
-        .then(console.log)
-        this.props.history.push("/")
+        .then(data => this.accountCreatedSuccess(data))
+
       }
       else{
-        console.log("Password and Password Confirmation does not match!")
+        window.alert("Password and Password Confirmation does not match!")
       }
     }
     else{
-      console.log("Please Make Sure that Username, Password and Password Confirmation is filled!")
+      window.alert("Please Make Sure that Username, Password and Password Confirmation is filled!")
     }
   };
 

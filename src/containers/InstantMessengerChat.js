@@ -34,7 +34,8 @@ class InstantMessengerChat extends React.Component {
 
   addedMessage = (e, val) => {
     e.preventDefault();
-    const message = {text: val, id: this.state.messageId++};
+    let newId = this.state.messageId + 1
+    const message = {text: val, id: newId};
     this.state.data.push(message);
     this.setState({
       data: this.state.data,
