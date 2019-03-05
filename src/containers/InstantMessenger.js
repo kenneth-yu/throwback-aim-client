@@ -34,7 +34,6 @@ class InstantMessenger extends React.Component{
   };
 
   render(){
-    console.log(this.props.history)
     return (
       <Draggable
         handle=".handle"

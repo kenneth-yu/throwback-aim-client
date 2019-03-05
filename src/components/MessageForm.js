@@ -1,5 +1,4 @@
 import React from 'react'
-import SendMessageSound from '../components/SendMessageSound'
 import SendMessage from '../sounds/imsend.wav'
 
 
