@@ -17,7 +17,7 @@ class FriendsCategories extends React.Component{
 
   render(){
 
-    let friendsList = this.props.category.friends.map(oneFriend => <Friends key={oneFriend.username} newChatHandler={this.props.newChatHandler} friend={oneFriend}/>)
+    let friendsList = this.props.category.friends.map(oneFriend => <Friends key={oneFriend.id} newChatHandler={this.props.newChatHandler} friend={oneFriend}/>)
 
 
     return(
