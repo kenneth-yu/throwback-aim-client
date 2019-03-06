@@ -15,25 +15,25 @@ class StreamChats extends Component {
         })
 }
 
-  conversationExists = () -> {
+//   conversationExists = () -> {
+//
+// }
 
-}
-
-  handleClick = () => {
-        let body = {
-            title: "PRIVATE",
-            sender_id: this.props.user_sender_id,
-            receiver_id: this.props.user_receiver_id
-        };
-
-        if (conversationExists(this.props.user_receiver_id)) {
-            this.props.exit();
-        }
-        else {
-            fetchToWebsocket("conversations", body);
-            this.props.exit();
-        }
-    };
+  // handleClick = () => {
+  //       let body = {
+  //           title: "PRIVATE",
+  //           sender_id: this.props.user_sender_id,
+  //           receiver_id: this.props.user_receiver_id
+  //       };
+  //
+  //       if (conversationExists(this.props.user_receiver_id)) {
+  //           this.props.exit();
+  //       }
+  //       else {
+  //           fetchToWebsocket("conversations", body);
+  //           this.props.exit();
+  //       }
+  //   };
   render(){
     return (
       null
