@@ -22,7 +22,7 @@ class FriendsCategories extends React.Component{
 
     return(
       <li onClick={this.hideHandler}>
-        <b className="friends">{this.props.category.name} ({(this.props.category.friends.filter(friend => friend.logged_in)).length}/{this.props.category.friends.length})</b>
+        <b className="friends">{this.props.category.name} ({this.props.category.friends.length}/{this.props.friendslistcount})</b>
         {this.state.hidden ? null : <ul>{friendsList}</ul>}
       </li>
     )

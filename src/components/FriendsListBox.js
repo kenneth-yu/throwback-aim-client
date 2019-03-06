@@ -7,6 +7,8 @@ import FriendsCategories from './FriendsCategories'
 class FriendsListBox extends React.Component{
   state = {
     categories: [{name: "Buddies", friends:[{username: "SmarterChild"},{username:"DumberChild"}]}, {name: "BuddyBois", friends:[{username:"Jerold"}]}, {name: "srsly", friends:[{username:"HalpPlsWork"}]}],
+    onlineFriends:[],
+    offlineFriends:[]
   }
 
   componentDidMount(){
@@ -18,13 +20,29 @@ class FriendsListBox extends React.Component{
     .then(res => res.json())
     .then(users => {
       updatedCategories[0].friends = users;
-      this.setState({ categories: updatedCategories })
+      let onlineUsers = []
+      let offlineUsers = []
+      users.forEach(oneUser =>{
+        if (oneUser.logged_in === true){
+          onlineUsers = [...onlineUsers, oneUser]
+        }
+        else{
+          offlineUsers = [...offlineUsers, oneUser]
+        }
+      })
+      this.setState({
+        categories: updatedCategories,
+        onlineFriends: [{name: "Buddies", friends: onlineUsers}],
+        offlineFriends: [{name: "Offline", friends: offlineUsers}]
+      })
     })
   }
 
 
   render(){
-    let categoriesList = this.state.categories.map(oneCategory => <FriendsCategories key={oneCategory.name} newChatHandler={this.props.newChatHandler} category={oneCategory}/>)
+    let onlineList = this.state.onlineFriends.map(oneCategory => <FriendsCategories key={oneCategory.name} newChatHandler={this.props.newChatHandler} count={this.state.onlineFriends.length} category={oneCategory}
+    online="true"/>)
+    let offlineList= this.state.offlineFriends.map(oneCategory => <FriendsCategories key={oneCategory.name} newChatHandler={this.props.newChatHandler} count ={this.state.offlineFriends.length} category={oneCategory} online="false"/>)
     return(
       <div className="friends-list-box">
       <ActionCableConsumer
@@ -32,7 +50,8 @@ class FriendsListBox extends React.Component{
           onReceived={(response) => this.props.handleUserStatus(response)}
         />
         <ul className="categories">
-          {categoriesList}
+          {onlineList}
+          {offlineList}
         </ul>
       </div>
     )
