@@ -75,19 +75,11 @@ class InstantMessengerChat extends React.Component {
     this.setState({value: event.target.value});
   };
 
-<<<<<<< HEAD
   handleReceivedMessage = (message) => {
     this.setState(state => {
       return {
         message
       };
-=======
-  handleReceivedConversation = response => {
-    const { chat } = response;
-
-    this.setState({
-      chats: [...this.state.chats, chat]
->>>>>>> 1a0b62c4a1b2e78e8906ce5945a767ec7ed90e2d
     });
   }
 
