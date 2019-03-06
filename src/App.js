@@ -55,11 +55,13 @@ class App extends Component {
   }
 
   newChatHandler = (friendObj) =>{
-    this.showHandler()
-    this.setState({
-      clickedFriend: friendObj,
-      showInstantMessengerChat: !this.state.showInstantMessengerChat
-    })
+    if(friendObj.logged_in){
+      this.showHandler()
+      this.setState({
+        clickedFriend: friendObj,
+        showInstantMessengerChat: !this.state.showInstantMessengerChat
+      })
+    }
   }
 
   signupHandler = userInfo => {
