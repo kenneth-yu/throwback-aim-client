@@ -18,7 +18,7 @@ class App extends Component {
     clickedFriend:{},
     user: {},
     users: [],
-    convos: []
+    conversations: []
   }
 
   componentDidMount() {
@@ -43,8 +43,8 @@ class App extends Component {
     })
     .then(res => res.json())
     .then(convos => {
-      let userConvos = convos.filter(convo => convo.user_id === this.state.user.id)
-      this.setState({ convos: userConvos })
+      let userConvos = this.state.conversations.filter(convo => convo.user_id === this.state.user.id)
+      this.setState({ conversations: userConvos })
     })
   }
 
@@ -134,13 +134,14 @@ handleUserStatus = (response) => {
 }
 
   render() {
+    console.log(this.state.convos)
     return (
       <div>
       <Switch>
         <Route path="/signup" component={CreateUser} />
       </Switch>
       {this.state.showInstantMessenger ?
-      <InstantMessenger user_id={this.state.user.id} testFunction={this.testFunction} showHandler={this.showHandler} authenticateUser={this.authenticateUser}/> :
+      <InstantMessenger user_id={this.state.user.id} conversations={this.state.conversations} showHandler={this.showHandler} authenticateUser={this.authenticateUser}/> :
       <FriendsList handleUserStatus={this.handleUserStatus} newChatHandler={this.newChatHandler} showHandler={this.showHandler} />}
       {this.state.showInstantMessengerChat ? <InstantMessengerChat user_id={this.state.user.id} clickedFriend={this.state.clickedFriend} showHandler={this.showHandler}/> : null}
       </div>
