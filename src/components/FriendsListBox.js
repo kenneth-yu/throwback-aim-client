@@ -1,5 +1,5 @@
 import React from 'react'
-import { ActionCable } from 'react-actioncable-provider';
+import { ActionCableConsumer } from 'react-actioncable-provider';
 import { API_ROOT, HEADERS } from '../constants';
 
 import FriendsCategories from './FriendsCategories'
@@ -41,7 +41,7 @@ class FriendsListBox extends React.Component{
     console.log(this.state)
     return(
       <div className="friends-list-box">
-      <ActionCable
+      <ActionCableConsumer
           channel={{ channel: 'PresenceChannel' }}
           onReceived={(response) => this.handleUserStatus(response)}
         />
