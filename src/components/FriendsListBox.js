@@ -1,38 +1,11 @@
 import React from 'react'
 import { ActionCable } from 'react-actioncable-provider';
-import { API_ROOT, HEADERS } from '../constants';
 
 import FriendsCategories from './FriendsCategories'
 
 class FriendsListBox extends React.Component{
   state = {
-    categories: [{name: "Buddies", friends:[{name: "SmarterChild"},{name:"DumberChild"}]}, {name: "BuddyBois", friends:[{name:"Jerold"}]}, {name: "srsly", friends:[{name:"HalpPlsWork"}]}],
-    users: []
-  }
-
-  handleUserStatus = (response) => {
-    console.log("handleUserStatus called")
-    const { type } = response
-    switch(type) {
-      case "DC_USER":
-        let currentUsers = [...this.state.users];
-        let currentUser = currentUsers.find(u => u.id === response.user);
-        if (currentUser) {
-          currentUser.logged_in = false
-          this.setState({ users: currentUsers })
-        }
-        break;
-      case "CO_USER":
-        let currentUsers2 = [...this.state.users];
-        let currentUser2 = currentUsers2.find(u => u.id === response.user);
-        if(currentUser2){
-          currentUser2.logged_in = true
-          this.setState({ users: currentUsers2})
-        }
-        break;
-      default:
-        return null;
-    }
+    categories: [{name: "Buddies", friends:[{name: "SmarterChild"},{name:"DumberChild"}]}, {name: "BuddyBois", friends:[{name:"Jerold"}]}, {name: "srsly", friends:[{name:"HalpPlsWork"}]}]
   }
 
 
@@ -43,7 +16,7 @@ class FriendsListBox extends React.Component{
       <div className="friends-list-box">
       <ActionCable
           channel={{ channel: 'PresenceChannel' }}
-          onReceived={(response) => this.handleUserStatus(response)}
+          onReceived={(response) => this.props.handleUserStatus(response)}
         />
         <ul className="categories">
           {categoriesList}
