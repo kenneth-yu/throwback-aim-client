@@ -102,12 +102,8 @@ class InstantMessengerChat extends React.Component {
             }}
             onReceived={(response) => this.handleReceivedConversation(response)}
             />
-<<<<<<< HEAD
-            <MessageList messageData={data} screenName={screenName} chatName={chatName} />
-=======
             <StreamChats sender_id={this.props.user_id} receiver_id={121}/>
             <MessageList user_id={this.props.user_id} messageData={data} screenName={screenName} chatName={chatName} />
->>>>>>> 0a498c17bfff136a16a845a0c58ee8e7fb318b6d
             <CustomizeRow />
             <MessageForm sender_id={this.props.user_id} addedMessage={this.addedMessage} onChange={this.handleChange} value={value}/>
 

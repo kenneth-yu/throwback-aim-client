@@ -43,7 +43,7 @@ class App extends Component {
     })
     .then(res => res.json())
     .then(convos => {
-      let userConvos = convos.filter(convo => convo.user_id === this.state.user.id)
+      let userConvos = this.state.convos.filter(convo => convo.user_id === this.state.user.id)
       this.setState({ convos: userConvos })
     })
   }
