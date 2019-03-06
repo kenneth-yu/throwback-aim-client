@@ -15,7 +15,8 @@ class App extends Component {
     showFriendsList: false,
     showInstantMessengerChat: false,
     clickedFriend:{},
-    user: {}
+    user: {},
+    users: []
   }
 
   componentDidMount() {
@@ -86,6 +87,33 @@ authenticateUser = (e, username, password) => {
   })
 }
 
+getAllUsers = () => {
+  
+}
+
+handleUserStatus = (response) => {
+  const { type } = response
+  switch(type) {
+    case "DC_USER":
+      let currentUsers = [...this.state.users];
+      let currentUser = currentUsers.find(u => u.id === response.user);
+      if (currentUser) {
+        currentUser.logged_in = false
+        this.setState({ users: currentUsers })
+      }
+      break;
+    case "CO_USER":
+      let currentUsers2 = [...this.state.users];
+      let currentUser2 = currentUsers2.find(u => u.id === response.user);
+      if(currentUser2){
+        currentUser2.logged_in = true
+        this.setState({ users: currentUsers2 })
+      }
+      break;
+    default:
+      return null;
+  }
+}
 
   render() {
     return (
@@ -95,7 +123,7 @@ authenticateUser = (e, username, password) => {
       </Switch>
       {this.state.showInstantMessenger ?
       <InstantMessenger testFunction={this.testFunction} showHandler={this.showHandler} authenticateUser={this.authenticateUser}/> :
-      <FriendsList newChatHandler={this.newChatHandler} showHandler={this.showHandler} />}
+      <FriendsList handleUserStatus={this.handleUserStatus} newChatHandler={this.newChatHandler} showHandler={this.showHandler} />}
       {this.state.showInstantMessengerChat ? <InstantMessengerChat clickedFriend={this.state.clickedFriend} showHandler={this.showHandler}/> : null}
       </div>
     )

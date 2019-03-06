@@ -13,7 +13,6 @@ class CreateUser extends React.Component{
   }
 
   accountCreatedSuccess = (data) =>{
-    console.log(data)
     if (data.status === 500){
       window.alert("Account was NOT created Successfully! Please Try Again!")
     }
@@ -58,7 +57,6 @@ class CreateUser extends React.Component{
 
 
   handleChange = (event) => {
-    // console.log(event.target)
     if(event.target.name ==="screenname"){
       this.setState({
         username: event.target.value
