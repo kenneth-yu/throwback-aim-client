@@ -40,9 +40,9 @@ class FriendsListBox extends React.Component{
 
 
   render(){
-    let onlineList = this.state.onlineFriends.map(oneCategory => <FriendsCategories key={oneCategory.name} newChatHandler={this.props.newChatHandler} count={this.state.onlineFriends.length} category={oneCategory}
+    let onlineList = this.state.onlineFriends.map(oneCategory => <FriendsCategories key={oneCategory.name} newChatHandler={this.props.newChatHandler} friendslistcount={this.state.categories[0].friends.length} count={this.state.onlineFriends.length} category={oneCategory}
     online="true"/>)
-    let offlineList= this.state.offlineFriends.map(oneCategory => <FriendsCategories key={oneCategory.name} newChatHandler={this.props.newChatHandler} count ={this.state.offlineFriends.length} category={oneCategory} online="false"/>)
+    let offlineList= this.state.offlineFriends.map(oneCategory => <FriendsCategories key={oneCategory.name} newChatHandler={this.props.newChatHandler} friendslistcount={this.state.categories[0].friends.length} count ={this.state.offlineFriends.length} category={oneCategory} online="false"/>)
     return(
       <div className="friends-list-box">
       <ActionCableConsumer

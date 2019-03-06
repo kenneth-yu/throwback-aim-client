@@ -21,7 +21,9 @@ class InstantMessengerChat extends React.Component {
       value: "",
       messageId: 0,
       chats: [],
-      message: ""
+      message: "",
+      allCurrentUserChats:[],
+      currentMessages:[]
     };
   }
 
@@ -31,43 +33,68 @@ class InstantMessengerChat extends React.Component {
       headers: HEADERS
     })
     .then(res => res.json())
-    .then(chats => this.setState({ chats }, () => {this.sendMessagesToData()}))
+    .then(chats => {this.sendMessagesToData(chats)})
   }
 
-  sendMessagesToData = () => {
-    this.state.chats.forEach(chat => this.setState({ data: chat.messages }))
+  sendMessagesToData = (chats) => {
+    console.log(this.props.clickedFriend)
+    let currentUserChats = chats.filter(oneChat => parseInt(oneChat.friendship.user1) === this.props.user_id || parseInt(oneChat.friendship.user2) === this.props.user_id)
+    let currentMessages = currentUserChats.filter(oneChat => parseInt(oneChat.friendship.user1) === this.props.clickedFriend.id || parseInt(oneChat.friendship.user2) === this.props.clickedFriend.id)
+    console.log(currentUserChats)
+    console.log(currentMessages)
+    this.setState({
+      chats: chats,
+      allCurrentUserChats:currentUserChats,
+      currentMessages: currentMessages
+    })
+    currentMessages[0].messages.forEach(chat => this.setState({ data: [...this.state.data, chat.content]}))
   }
 
 
 
   addedMessage = (e, val) => {
     e.preventDefault();
-    let newId = this.state.messageId + 1
-    const message = {text: val, id: newId};
-    this.state.data.push(message);
-    this.setState({
-      data: this.state.data,
-      value: ""
-    });
-
+    // this.state.data.push(val);
+    // fetch('http://localhost:3000/messages', {
+    //   method: 'POST',
+    //   headers: HEADERS,
+    //   body: JSON.stringify({
+    //     content: val,
+    //     user_id: this.props.user_id
+    //   })
+    // }).then(res => res.json()).then(data => {
+      this.setState({
+        // data: [...this.state.data, data.content],
+        data: [...this.state.data, val],
+        value: ""
+      })
+    // }).catch(console.log("failed"))
   };
 
   handleChange = (event) => {
     this.setState({value: event.target.value});
   };
 
+<<<<<<< HEAD
   handleReceivedMessage = (message) => {
     this.setState(state => {
       return {
         message
       };
+=======
+  handleReceivedConversation = response => {
+    const { chat } = response;
+
+    this.setState({
+      chats: [...this.state.chats, chat]
+>>>>>>> 1a0b62c4a1b2e78e8906ce5945a767ec7ed90e2d
     });
   }
 
 
   render() {
     const { data, chatName, screenName, value} = this.state;
-    console.log(this.state.chats)
+    // console.log(this.state.chats)
     return (
       <Draggable
         handle=".handle"

@@ -43,8 +43,13 @@ class App extends Component {
     })
     .then(res => res.json())
     .then(convos => {
+<<<<<<< HEAD
       let userConvos = this.state.conversations.filter(convo => convo.user_id === this.state.user.id)
       this.setState({ conversations: userConvos })
+=======
+      let userConvos = this.state.convos.filter(convo => convo.user_id === this.state.user.id)
+      this.setState({ convos: userConvos })
+>>>>>>> 1a0b62c4a1b2e78e8906ce5945a767ec7ed90e2d
     })
   }
 
@@ -67,11 +72,13 @@ class App extends Component {
   }
 
   newChatHandler = (friendObj) =>{
-    this.showHandler()
-    this.setState({
-      clickedFriend: friendObj,
-      showInstantMessengerChat: !this.state.showInstantMessengerChat
-    })
+    if(friendObj.logged_in){
+      this.showHandler()
+      this.setState({
+        clickedFriend: friendObj,
+        showInstantMessengerChat: !this.state.showInstantMessengerChat
+      })
+    }
   }
 
   signupHandler = userInfo => {
