@@ -87,6 +87,10 @@ authenticateUser = (e, username, password) => {
   })
 }
 
+getAllUsers = () => {
+  
+}
+
 handleUserStatus = (response) => {
   const { type } = response
   switch(type) {
