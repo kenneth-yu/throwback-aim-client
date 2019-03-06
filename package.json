@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "eslint": "^5.15.1",
     "react": "^16.8.3",
     "react-actioncable-provider": "^2.0.0",
     "react-dom": "^16.8.3",
