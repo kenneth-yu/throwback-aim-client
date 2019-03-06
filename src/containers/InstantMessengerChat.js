@@ -86,7 +86,7 @@ class InstantMessengerChat extends React.Component {
 
   render() {
     const { data, chatName, screenName, value} = this.state;
-    // console.log(this.state.chats)
+    console.log(this.props.conversations)
     return (
       <Draggable
         handle=".handle"
