@@ -15,7 +15,7 @@ class InstantMessengerChat extends React.Component {
     super(props);
     this.state = {
       chatName: this.props.clickedFriend.username, //GET this information
-      screenName: "AorKennyKiller", //GET this information
+      screenName: this.props.user.username, //GET this information
       data: [],
       value: "",
       messageId: 0,
@@ -35,17 +35,17 @@ class InstantMessengerChat extends React.Component {
   }
 
   sendMessagesToData = (chats) => {
-    console.log(this.props.clickedFriend)
-    let currentUserChats = chats.filter(oneChat => parseInt(oneChat.friendship.user1) === this.props.user_id || parseInt(oneChat.friendship.user2) === this.props.user_id)
-    let currentMessages = currentUserChats.filter(oneChat => parseInt(oneChat.friendship.user1) === this.props.clickedFriend.id || parseInt(oneChat.friendship.user2) === this.props.clickedFriend.id)
+    console.log(chats)
+    let currentUserChats = chats.filter(oneChat => oneChat.user_id === this.props.user_id)
+    // let currentMessages = currentUserChats.filter(oneChat => parseInt(oneChat.friendship.user1) === this.props.clickedFriend.id || parseInt(oneChat.friendship.user2) === this.props.clickedFriend.id)
     console.log(currentUserChats)
-    console.log(currentMessages)
+    // console.log(currentMessages)
     this.setState({
       chats: chats,
       allCurrentUserChats:currentUserChats,
-      currentMessages: currentMessages
+      // currentMessages: currentMessages
     })
-    currentMessages[0].messages.forEach(chat => this.setState({ data: [...this.state.data, chat.content]}))
+    // currentMessages[0].messages.forEach(chat => this.setState({ data: [...this.state.data, chat.content]}))
   }
 
 

@@ -144,7 +144,7 @@ handleUserStatus = (response) => {
       {this.state.showInstantMessenger ?
       <InstantMessenger user_id={this.state.user.id} testFunction={this.testFunction} showHandler={this.showHandler} authenticateUser={this.authenticateUser}/> :
       <FriendsList handleUserStatus={this.handleUserStatus} newChatHandler={this.newChatHandler} showHandler={this.showHandler} />}
-      {this.state.showInstantMessengerChat ? <InstantMessengerChat user_id={this.state.user.id} clickedFriend={this.state.clickedFriend} showHandler={this.showHandler}/> : null}
+      {this.state.showInstantMessengerChat ? <InstantMessengerChat user_id={this.state.user.id} user={this.state.user} clickedFriend={this.state.clickedFriend} showHandler={this.showHandler}/> : null}
       </div>
     )
   }
