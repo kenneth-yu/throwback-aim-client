@@ -79,17 +79,22 @@ authenticateUser = (e, username, password) => {
     body: JSON.stringify({ user })
   })
   .then(resp => resp.json())
-  .then(data => {
-    localStorage.setItem("token", data.jwt);
-    this.setState({ user: data.user })
-  })
+  .then(data => {this.testFunction(data)})
+    // localStorage.setItem("token", data.jwt);
+    // this.setState({ user: data.user })
+  // })
 }
 
-  testFunction = () => {
-    console.log(HEADERS)
+  testFunction = (data) => {
+    // console.log(HEADERS)
+    console.log(data.user)
     fetch(`${API_ROOT}chats`, {
-      method: `GET`,
-      headers: HEADERS
+      method: "GET",
+      headers: {
+        "content-type": "application/json",
+        accepts: "application/json",
+        Authorization: `${data.jwt}`
+      }
     })
     .then(res => res.json())
     .then(console.log)
@@ -97,8 +102,8 @@ authenticateUser = (e, username, password) => {
 
 
   render() {
-    console.log(this.state.user)
-    console.log(HEADERS)
+    // console.log(this.state.user)
+    // console.log(HEADERS)
     return (
       <div>
       <Switch>
