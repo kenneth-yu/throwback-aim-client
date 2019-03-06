@@ -13,7 +13,7 @@ class InstantMessengerChat extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      chatName: this.props.clickedFriend.name, //GET this information
+      chatName: this.props.clickedFriend.username, //GET this information
       screenName: "AorKennyKiller", //GET this information
       data: [],
       value: "",
