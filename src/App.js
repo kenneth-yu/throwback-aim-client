@@ -9,6 +9,7 @@ import { API_ROOT, HEADERS } from './constants'
 import CreateUser from './containers/CreateUser'
 import { Route, Switch } from "react-router-dom";
 
+
 class App extends Component {
   state = {
     showInstantMessenger: true,
@@ -127,9 +128,9 @@ handleUserStatus = (response) => {
         <Route path="/signup" component={CreateUser} />
       </Switch>
       {this.state.showInstantMessenger ?
-      <InstantMessenger testFunction={this.testFunction} showHandler={this.showHandler} authenticateUser={this.authenticateUser}/> :
+      <InstantMessenger user_id={this.state.user.id} testFunction={this.testFunction} showHandler={this.showHandler} authenticateUser={this.authenticateUser}/> :
       <FriendsList handleUserStatus={this.handleUserStatus} newChatHandler={this.newChatHandler} showHandler={this.showHandler} />}
-      {this.state.showInstantMessengerChat ? <InstantMessengerChat clickedFriend={this.state.clickedFriend} showHandler={this.showHandler}/> : null}
+      {this.state.showInstantMessengerChat ? <InstantMessengerChat user_id={this.state.user.id} clickedFriend={this.state.clickedFriend} showHandler={this.showHandler}/> : null}
       </div>
     )
   }
