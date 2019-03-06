@@ -12,6 +12,7 @@ import Search from '../img/search.png'
 class FriendsList extends React.Component{
 
 
+
   render() {
    return (
      <Draggable

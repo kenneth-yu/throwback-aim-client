@@ -5,8 +5,7 @@ import './Chat.css';
 import InstantMessengerChat from './containers/InstantMessengerChat'
 import InstantMessenger from './containers/InstantMessenger'
 import FriendsList from './containers/FriendsList'
-import { API_WS_ROOT, API_ROOT, HEADERS } from './constants'
-import { ActionCableProvider } from 'react-actioncable-provider';
+import { API_ROOT, HEADERS } from './constants'
 import CreateUser from './containers/CreateUser'
 import { Route, Switch } from "react-router-dom";
 
@@ -104,7 +103,7 @@ handleUserStatus = (response) => {
       let currentUser2 = currentUsers2.find(u => u.id === response.user);
       if(currentUser2){
         currentUser2.logged_in = true
-        this.setState({ users: currentUsers2})
+        this.setState({ users: currentUsers2 })
       }
       break;
     default:
@@ -113,9 +112,7 @@ handleUserStatus = (response) => {
 }
 
   render() {
-    console.log(this.state)
     return (
-      <ActionCableProvider url={API_WS_ROOT+`?user=${this.state.user.id}`}>
       <div>
       <Switch>
         <Route path="/signup" component={CreateUser} />
@@ -125,7 +122,6 @@ handleUserStatus = (response) => {
       <FriendsList handleUserStatus={this.handleUserStatus} newChatHandler={this.newChatHandler} showHandler={this.showHandler} />}
       {this.state.showInstantMessengerChat ? <InstantMessengerChat clickedFriend={this.state.clickedFriend} showHandler={this.showHandler}/> : null}
       </div>
-      </ ActionCableProvider>
     )
   }
 }

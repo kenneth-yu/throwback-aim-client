@@ -17,11 +17,12 @@ class FriendsCategories extends React.Component{
 
   render(){
 
-    let friendsList = this.props.category.friends.map(oneFriend => <Friends key={oneFriend.name} newChatHandler={this.props.newChatHandler} friend={oneFriend}/>)
+    let friendsList = this.props.category.friends.map(oneFriend => <Friends key={oneFriend.username} newChatHandler={this.props.newChatHandler} friend={oneFriend}/>)
+
 
     return(
       <li onClick={this.hideHandler}>
-        <b className="friends">{this.props.category.name} ({this.props.category.friends.length}/{this.props.category.friends.length})</b>
+        <b className="friends">{this.props.category.name} ({(this.props.category.friends.filter(friend => friend.logged_in)).length}/{this.props.category.friends.length})</b>
         {this.state.hidden ? null : <ul>{friendsList}</ul>}
       </li>
     )

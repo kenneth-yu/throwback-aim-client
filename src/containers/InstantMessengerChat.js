@@ -29,7 +29,7 @@ class InstantMessengerChat extends React.Component {
       headers: HEADERS
     })
     .then(res => res.json())
-    .then(console.log)
+    .then(chats => this.setState({ chats }))
   }
 
   addedMessage = (e, val) => {
@@ -70,7 +70,7 @@ class InstantMessengerChat extends React.Component {
         <div className="instant-messenger-chat">
           <div className="handle"><ChatHeader showHandler={this.props.showHandler} chatName={chatName} /></div>
             <Navbar  chatName={chatName} />
-            <MessageList messageData={data} screenName={screenName} chatName={chatName}/>
+            <MessageList messageData={data} screenName={screenName} chatName={chatName} chats={this.state.chats}/>
             <CustomizeRow />
             <MessageForm addedMessage={this.addedMessage} onChange={this.handleChange} value={value}/>
 

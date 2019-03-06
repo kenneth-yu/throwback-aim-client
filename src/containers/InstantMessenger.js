@@ -20,7 +20,7 @@ class InstantMessenger extends React.Component{
   }
 
   handleChange = (event) => {
-    // console.log(event.target)
+
     if(event.target.name ==="screenname"){
       this.setState({
         username: event.target.value
