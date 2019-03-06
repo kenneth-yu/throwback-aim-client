@@ -83,7 +83,7 @@ class InstantMessengerChat extends React.Component {
             }}
             onReceived={(response) => this.handleReceivedConversation(response)}
             />
-
+            <StreamChats sender_id={this.props.user_id} />
             <MessageList messageData={data} screenName={screenName} chatName={chatName} />
             <CustomizeRow />
             <MessageForm addedMessage={this.addedMessage} onChange={this.handleChange} value={value}/>

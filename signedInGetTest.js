@@ -9,13 +9,13 @@ fetch('http://localhost:3000/login', {
   body: JSON.stringify({
     user: {
       username: `snorlax`,
-      password: 'password'
+      password: '123'
     }
   })
 })
   .then(r => r.json())
   .then(data => {
-    fetch('http://localhost:3000/chats', {
+    fetch('http://localhost:3000/user_conversation', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
