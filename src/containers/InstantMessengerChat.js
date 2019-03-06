@@ -8,6 +8,7 @@ import Draggable from 'react-draggable';
 import { ActionCableConsumer } from 'react-actioncable-provider';
 import { API_ROOT, HEADERS } from '../constants';
 import StreamChats from "../components/StreamChats";
+import ChatCable from "../components/ChatCable";
 
 
 class InstantMessengerChat extends React.Component {
@@ -20,6 +21,7 @@ class InstantMessengerChat extends React.Component {
       value: "",
       messageId: 0,
       chats: [],
+      message: "",
       allCurrentUserChats:[],
       currentMessages:[]
     };
@@ -49,6 +51,7 @@ class InstantMessengerChat extends React.Component {
   }
 
 
+
   addedMessage = (e, val) => {
     e.preventDefault();
     // this.state.data.push(val);
@@ -72,13 +75,14 @@ class InstantMessengerChat extends React.Component {
     this.setState({value: event.target.value});
   };
 
-  handleReceivedConversation = response => {
-    const { chat } = response;
-
-    this.setState({
-      chats: [...this.state.chats, chat]
+  handleReceivedMessage = (message) => {
+    this.setState(state => {
+      return {
+        message
+      };
     });
-  };
+  }
+
 
   render() {
     const { data, chatName, screenName, value} = this.state;
@@ -96,13 +100,8 @@ class InstantMessengerChat extends React.Component {
         <div className="instant-messenger-chat">
           <div className="handle"><ChatHeader showHandler={this.props.showHandler} chatName={chatName} /></div>
             <Navbar  chatName={chatName} />
-            <ActionCableConsumer
-            channel={{
-              channel: 'ChatsChannel'
-            }}
-            onReceived={(response) => this.handleReceivedConversation(response)}
-            />
-            <StreamChats sender_id={this.props.user_id} receiver_id={121}/>
+            <ChatCable handleReceivedMessage={this.handleReceivedMessage} conversations={this.props.conversations} />
+            <StreamChats sender_id={this.props.user_id} receiver={this.props.clickedFriend}/>
             <MessageList user_id={this.props.user_id} messageData={data} screenName={screenName} chatName={chatName} />
             <CustomizeRow />
             <MessageForm sender_id={this.props.user_id} addedMessage={this.addedMessage} onChange={this.handleChange} value={value}/>
