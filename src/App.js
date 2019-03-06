@@ -37,13 +37,16 @@ class App extends Component {
 
 
   showHandler = (chatName) =>{
-    if(chatName === "Friends List" || chatName === "Sign On") {
+    if(chatName === "Friends List") {
       this.setState({
-        showFriendsList: !this.state.showFriendsList,
-        showInstantMessenger: !this.state.showInstantMessenger
+        showFriendsList: false,
+        showInstantMessenger: true
       })
     }
-    else {
+    else if (chatName === "Sign On"){
+      return null
+    }
+    else{
       this.setState({
         showInstantMessengerChat: !this.state.showInstantMessengerChat
       })
@@ -81,14 +84,19 @@ authenticateUser = (e, username, password) => {
   })
   .then(resp => resp.json())
   .then(data => {
+
     localStorage.setItem("token", data.jwt);
-    this.setState({ user: data.user });
+    this.setState({
+      user: data.user ,
+      showFriendsList: !this.state.showFriendsList,
+      showInstantMessenger: !this.state.showInstantMessenger
+    });
     document.cookie = 'X-Authorization=' + data.jwt + '; path=/';
   })
 }
 
 getAllUsers = () => {
-  
+
 }
 
 handleUserStatus = (response) => {
