@@ -2,7 +2,7 @@ import React from 'react'
 import MessageItem from '../components/MessageItem'
 
 const MessageList = (props) => {
-  const { messageData, screenName, chatName } = props;
+  const { messageData, screenName, chatName, user_id } = props;
   const currentMessage = { content: "Hi", id: 1 };
   return (
     <div className="message-list">
@@ -14,7 +14,7 @@ const MessageList = (props) => {
         />
         { messageData.map((message, i) => {
             return (
-              <MessageItem message={message} screenName={screenName} key={i}/>
+              <MessageItem message={message} user_id={user_id} screenName={screenName} key={i}/>
             );
           })
         }

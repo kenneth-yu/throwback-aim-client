@@ -17,7 +17,8 @@ class App extends Component {
     showInstantMessengerChat: false,
     clickedFriend:{},
     user: {},
-    users: []
+    users: [],
+    convos: []
   }
 
   componentDidMount() {
@@ -30,11 +31,22 @@ class App extends Component {
       if (user.error){
         return <Redirect to="/" />;
       } else {
-        this.setState({ user })
+        this.setState({ user }, () => {this.getUserConversations()})
       }
     })
   }
 
+  getUserConversations = () => {
+    fetch(`${API_ROOT}user_conversations`, {
+      method: `GET`,
+      headers: HEADERS
+    })
+    .then(res => res.json())
+    .then(convos => {
+      let userConvos = convos.filter(convo => convo.user_id === this.state.user.id)
+      this.setState({ convos: userConvos })
+    })
+  }
 
 
   showHandler = (chatName) =>{

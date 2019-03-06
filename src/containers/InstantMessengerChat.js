@@ -24,7 +24,7 @@ class InstantMessengerChat extends React.Component {
   }
 
   componentDidMount() {
-    fetch(`${API_ROOT}chats`, {
+    fetch(`${API_ROOT}user_conversations`, {
       method: `GET`,
       headers: HEADERS
     })
@@ -83,10 +83,10 @@ class InstantMessengerChat extends React.Component {
             }}
             onReceived={(response) => this.handleReceivedConversation(response)}
             />
-            <StreamChats sender_id={this.props.user_id} />
-            <MessageList messageData={data} screenName={screenName} chatName={chatName} />
+            <StreamChats sender_id={this.props.user_id} receiver_id={121}/>
+            <MessageList user_id={this.props.user_id} messageData={data} screenName={screenName} chatName={chatName} />
             <CustomizeRow />
-            <MessageForm addedMessage={this.addedMessage} onChange={this.handleChange} value={value}/>
+            <MessageForm sender_id={this.props.user_id} addedMessage={this.addedMessage} onChange={this.handleChange} value={value}/>
 
         </div>
       </Draggable>
