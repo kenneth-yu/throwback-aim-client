@@ -81,24 +81,13 @@ authenticateUser = (e, username, password) => {
   .then(resp => resp.json())
   .then(data => {
     localStorage.setItem("token", data.jwt);
-    this.setState({ user: data.user })
+    this.setState({ user: data.user });
+    document.cookie = 'X-Authorization=' + data.jwt + '; path=/';
   })
 }
 
-  testFunction = () => {
-    console.log(HEADERS)
-    fetch(`${API_ROOT}chats`, {
-      method: `GET`,
-      headers: HEADERS
-    })
-    .then(res => res.json())
-    .then(console.log)
-  }
-
 
   render() {
-    console.log(this.state.user)
-    console.log(HEADERS)
     return (
       <div>
       <Switch>

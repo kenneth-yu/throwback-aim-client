@@ -1,5 +1,5 @@
 import React from 'react'
-import { ActionCableConsumer } from 'react-actioncable-provider';
+import { ActionCable } from 'react-actioncable-provider';
 import { API_ROOT, HEADERS } from '../constants';
 
 import FriendsCategories from './FriendsCategories'
@@ -10,24 +10,30 @@ class FriendsListBox extends React.Component{
     users: []
   }
 
-  getFriendsList = () =>{
-    fetch(`${API_ROOT}users`, {
-      method: `GET`,
-      headers: HEADERS
-    })
-    .then(res => res.json())
-    .then(data => this.setState({
-      categories: data.categories,
-    }))
+  handleUserStatus = (response) => {
+    console.log("handleUserStatus called")
+    const { type } = response
+    switch(type) {
+      case "DC_USER":
+        let currentUsers = [...this.state.users];
+        let currentUser = currentUsers.find(u => u.id === response.user);
+        if (currentUser) {
+          currentUser.logged_in = false
+          this.setState({ users: currentUsers })
+        }
+        break;
+      case "CO_USER":
+        let currentUsers2 = [...this.state.users];
+        let currentUser2 = currentUsers2.find(u => u.id === response.user);
+        if(currentUser2){
+          currentUser2.logged_in = true
+          this.setState({ users: currentUsers2})
+        }
+        break;
+      default:
+        return null;
+    }
   }
-
-  handleReceivedUsers = response => {
-    const { userlist } = response;
-    this.setState({
-      users: [...this.state.users, userlist]
-    });
-  };
-
 
 
   render(){
@@ -35,9 +41,9 @@ class FriendsListBox extends React.Component{
     console.log(this.state)
     return(
       <div className="friends-list-box">
-      <ActionCableConsumer
-          channel={{ channel: 'UsersChannel' }}
-          onReceived={this.handleReceivedUsers}
+      <ActionCable
+          channel={{ channel: 'PresenceChannel' }}
+          onReceived={(response) => this.handleUserStatus(response)}
         />
         <ul className="categories">
           {categoriesList}
