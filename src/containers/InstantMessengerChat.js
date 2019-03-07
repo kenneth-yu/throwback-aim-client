@@ -62,7 +62,7 @@ class InstantMessengerChat extends React.Component {
       headers: HEADERS,
       body: JSON.stringify({
         content: val,
-        user_id: 121,
+        user_id: this.props.user.user.id,
         // chat_id: something
       })
     })

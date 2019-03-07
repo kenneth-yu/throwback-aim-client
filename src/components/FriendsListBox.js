@@ -19,7 +19,6 @@ class FriendsListBox extends React.Component{
     })
     .then(res => res.json())
     .then(users => {
-      console.log(users)
       updatedCategories[0].friends = users;
       let onlineUsers = []
       let offlineUsers = []
