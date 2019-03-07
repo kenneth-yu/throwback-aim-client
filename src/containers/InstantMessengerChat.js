@@ -59,19 +59,34 @@ class InstantMessengerChat extends React.Component {
 
   addedMessage = (e, val) => {
     e.preventDefault();
-    fetch(`${API_ROOT}messages`, {
-      method: `POST`,
-      headers: HEADERS,
-      body: JSON.stringify({
-        content: val,
-        user_id: this.props.user.user.id,
-        chat_id: this.state.currentMessages[0].messages[0].chat_id
-      })
-    }).then(res=>res.json())
-    .then(data=> this.setState({
-      data: [...this.state.data, data.content],
-      value: ""
-    }))
+    if(this.state.currentMessages.length > 0){
+      fetch(`${API_ROOT}messages`, {
+        method: `POST`,
+        headers: HEADERS,
+        body: JSON.stringify({
+          content: val,
+          user_id: this.props.user.user.id,
+          chat_id: this.state.currentMessages[0].messages[0].chat_id
+        })
+      }).then(res=>res.json())
+      .then(data=> this.setState({
+        data: [...this.state.data, data.content],
+        value: ""
+      }))
+    } else {
+      fetch(`${API_ROOT}messages`, {
+        method: `POST`,
+        headers: HEADERS,
+        body: JSON.stringify({
+          content: val,
+          user_id: this.props.user.user.id
+        })
+      }).then(res=>res.json())
+      .then(data=> this.setState({
+        data: [...this.state.data, data.content],
+        value: ""
+      }))
+    }
   }
 
   handleChange = (event) => {
