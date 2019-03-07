@@ -131,6 +131,7 @@ handleUserStatus = (response) => {
 }
 
   render() {
+    console.log(this.state.user.id)
     console.log(document.cookie)
     return (
       <div>

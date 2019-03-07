@@ -37,9 +37,12 @@ class InstantMessengerChat extends React.Component {
   }
 
   sendMessagesToData = (chats) => {
-    console.log(this.props.clickedFriend)
-    let currentUserChats = chats.filter(oneChat => parseInt(oneChat.friendship.user1) === this.props.user_id || parseInt(oneChat.friendship.user2) === this.props.user_id)
+    console.log(chats)
+    console.log(this.props.user.user.id)
+    let currentUserChats = chats.filter(oneChat => parseInt(oneChat.friendship.user1) === this.props.user.user.id || parseInt(oneChat.friendship.user2) === this.props.user.user.id)
     let currentMessages = currentUserChats.filter(oneChat => parseInt(oneChat.friendship.user1) === this.props.clickedFriend.id || parseInt(oneChat.friendship.user2) === this.props.clickedFriend.id)
+    console.log(currentUserChats)
+    console.log(currentMessages)
     this.setState({
       chats: chats,
       allCurrentUserChats:currentUserChats,
@@ -59,7 +62,8 @@ class InstantMessengerChat extends React.Component {
       headers: HEADERS,
       body: JSON.stringify({
         content: val,
-        user_id: this.props.user_id
+        user_id: this.props.user_id,
+        // chat_id: something
       })
     })
     // fetch(`${API_ROOT}chats`, {
