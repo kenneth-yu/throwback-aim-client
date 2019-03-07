@@ -38,6 +38,7 @@ class InstantMessengerChat extends React.Component {
 
   sendMessagesToData = (chats) => {
     console.log(chats)
+    console.log(this.props.user.id)
     let currentUserChats = chats.filter(oneChat => oneChat.user_id === this.props.user_id)
     // let currentMessages = currentUserChats.filter(oneChat => parseInt(oneChat.friendship.user1) === this.props.clickedFriend.id || parseInt(oneChat.friendship.user2) === this.props.clickedFriend.id)
     console.log(currentUserChats)

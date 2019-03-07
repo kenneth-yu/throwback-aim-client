@@ -141,6 +141,7 @@ handleUserStatus = (response) => {
 
   render() {
     console.log(this.state.conversations)
+    console.log(this.state.user)
     return (
       <div>
       <Switch>
