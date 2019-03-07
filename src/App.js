@@ -22,6 +22,9 @@ class App extends Component {
   }
 
   componentDidMount() {
+  }
+
+  getCurrentUser = () => {
     fetch(`${API_ROOT}get_user`, {
       method: `GET`,
       headers: HEADERS
@@ -43,8 +46,9 @@ class App extends Component {
     })
     .then(res => res.json())
     .then(convos => {
-      let userConvos = this.state.conversations.filter(convo => convo.user_id === this.state.user.id)
-      this.setState({ conversations: userConvos })
+      console.log(!!convos)
+      // let userConvos = !!convos && convos.filter(convo => convo.user_id === this.state.user.id)
+      // this.setState({ conversations: userConvos })
     })
   }
 
@@ -105,7 +109,7 @@ authenticateUser = (e, username, password) => {
       user: data.user ,
       showFriendsList: !this.state.showFriendsList,
       showInstantMessenger: !this.state.showInstantMessenger
-    });
+    }, this.getCurrentUser());
     document.cookie = 'X-Authorization=' + data.jwt + '; path=/';
   })
 }
@@ -136,7 +140,7 @@ handleUserStatus = (response) => {
 }
 
   render() {
-    console.log(this.state.convos)
+    console.log(this.state.conversations)
     return (
       <div>
       <Switch>
