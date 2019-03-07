@@ -8,7 +8,7 @@ import Draggable from 'react-draggable';
 import { ActionCableConsumer } from 'react-actioncable-provider';
 import { API_ROOT, HEADERS } from '../constants';
 import StreamChats from "../components/StreamChats";
-import ChatCable from "../components/ChatCable";
+
 
 
 class InstantMessengerChat extends React.Component {
@@ -28,7 +28,7 @@ class InstantMessengerChat extends React.Component {
   }
 
   componentDidMount() {
-    fetch(`${API_ROOT}user_conversations`, {
+    fetch(`${API_ROOT}chats`, {
       method: `GET`,
       headers: HEADERS
     })
@@ -37,24 +37,36 @@ class InstantMessengerChat extends React.Component {
   }
 
   sendMessagesToData = (chats) => {
-    console.log(chats)
-    console.log(this.props.user.id)
-    let currentUserChats = chats.filter(oneChat => oneChat.user_id === this.props.user_id)
-    // let currentMessages = currentUserChats.filter(oneChat => parseInt(oneChat.friendship.user1) === this.props.clickedFriend.id || parseInt(oneChat.friendship.user2) === this.props.clickedFriend.id)
-    console.log(currentUserChats)
-    // console.log(currentMessages)
+    console.log(this.props.clickedFriend)
+    let currentUserChats = chats.filter(oneChat => parseInt(oneChat.friendship.user1) === this.props.user_id || parseInt(oneChat.friendship.user2) === this.props.user_id)
+    let currentMessages = currentUserChats.filter(oneChat => parseInt(oneChat.friendship.user1) === this.props.clickedFriend.id || parseInt(oneChat.friendship.user2) === this.props.clickedFriend.id)
     this.setState({
       chats: chats,
       allCurrentUserChats:currentUserChats,
-      // currentMessages: currentMessages
+      currentMessages: currentMessages
     })
-    // currentMessages[0].messages.forEach(chat => this.setState({ data: [...this.state.data, chat.content]}))
+    if (currentMessages.length > 0) {
+      currentMessages[0].messages.forEach(chat => this.setState({ data: [...this.state.data, chat.content]}))
+    }
   }
 
 
 
   addedMessage = (e, val) => {
     e.preventDefault();
+    fetch(`${API_ROOT}messages`, {
+      method: `POST`,
+      headers: HEADERS,
+      body: JSON.stringify({
+        content: val,
+        user_id: this.props.user_id
+      })
+    })
+    // fetch(`${API_ROOT}chats`, {
+    //   method: 'POST',
+    //   headers: HEADERS,
+    //   body: JSON.stringify(dataObj)
+    // })
     // this.state.data.push(val);
     // fetch('http://localhost:3000/messages', {
     //   method: 'POST',
@@ -78,6 +90,7 @@ class InstantMessengerChat extends React.Component {
 
   handleReceivedMessage = (message) => {
     console.log(message)
+    console.log("handleReceivedMessage called")
     this.setState(state => {
       return {
         message
@@ -88,7 +101,6 @@ class InstantMessengerChat extends React.Component {
 
   render() {
     const { data, chatName, screenName, value} = this.state;
-    console.log(this.props.conversations)
     return (
       <Draggable
         handle=".handle"
@@ -102,9 +114,8 @@ class InstantMessengerChat extends React.Component {
         <div className="instant-messenger-chat">
           <div className="handle"><ChatHeader showHandler={this.props.showHandler} chatName={chatName} /></div>
             <Navbar  chatName={chatName} />
-            <ChatCable handleReceivedMessage={this.handleReceivedMessage} conversations={this.props.conversations} />
             <StreamChats sender_id={this.props.user_id} receiver={this.props.clickedFriend}/>
-            <MessageList user_id={this.props.user_id} messageData={data} screenName={screenName} chatName={chatName} />
+            <MessageList handleReceivedMessage={this.handleReceivedMessage} message={this.state.message} allCurrentUserChats={this.state.allCurrentUserChats} user_id={this.props.user_id} messageData={data} screenName={screenName} chatName={chatName} />
             <CustomizeRow />
             <MessageForm sender_id={this.props.user_id} addedMessage={this.addedMessage} onChange={this.handleChange} value={value}/>
 
