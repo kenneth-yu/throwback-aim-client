@@ -1,5 +1,6 @@
-import React from 'react'
-import MessageItem from '../components/MessageItem'
+import React from 'react';
+import MessageItem from '../components/MessageItem';
+import ChatCable from "../components/ChatCable";
 
 const MessageList = (props) => {
   const { messageData, screenName, chatName, user_id} = props;
@@ -7,6 +8,7 @@ const MessageList = (props) => {
   return (
     <div className="message-list">
       <div className="message-list__container">
+      <ChatCable handleReceivedMessage={props.handleReceivedMessage} allCurrentUserChats={props.allCurrentUserChats} />
         {allMessages}
       </div>
     </div>

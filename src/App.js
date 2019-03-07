@@ -46,8 +46,8 @@ class App extends Component {
     })
     .then(res => res.json())
     .then(convos => {
-      // let userConvos = !!convos && convos.filter(convo => convo.user_id === this.state.user.id)
-      // this.setState({ conversations: userConvos })
+      let userConvos = !!convos && convos.filter(convo => convo.user_id === this.state.user.id)
+      this.setState({ conversations: userConvos })
     })
   }
 
@@ -140,22 +140,16 @@ handleUserStatus = (response) => {
 }
 
   render() {
-    console.log(this.state.conversations)
+    console.log(this.state.users)
     return (
       <div>
       <Switch>
         <Route path="/signup" component={CreateUser} />
       </Switch>
       {this.state.showInstantMessenger ?
-<<<<<<< HEAD
-      <InstantMessenger user_id={this.state.user.id} showHandler={this.showHandler} authenticateUser={this.authenticateUser}/> :
-      <FriendsList handleUserStatus={this.handleUserStatus} newChatHandler={this.newChatHandler} showHandler={this.showHandler} />}
-      {this.state.showInstantMessengerChat ? <InstantMessengerChat conversations={this.state.conversations} user_id={this.state.user.id} clickedFriend={this.state.clickedFriend} showHandler={this.showHandler}/> : null}
-=======
       <InstantMessenger user_id={this.state.user.id}  showHandler={this.showHandler} authenticateUser={this.authenticateUser}/> :
       <FriendsList handleUserStatus={this.handleUserStatus} newChatHandler={this.newChatHandler} showHandler={this.showHandler} />}
       {this.state.showInstantMessengerChat ? <InstantMessengerChat user_id={this.state.user.id} user={this.state.user} conversations={this.state.conversations} clickedFriend={this.state.clickedFriend} showHandler={this.showHandler}/> : null}
->>>>>>> c5ed042702035fc2b997ec99c93e3de69856b280
       </div>
     )
   }
