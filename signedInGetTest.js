@@ -15,7 +15,7 @@ fetch('http://localhost:3000/login', {
 })
   .then(r => r.json())
   .then(data => {
-    fetch('http://localhost:3000/users', {
+    fetch('http://localhost:3000/user_conversation', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',

@@ -110,7 +110,6 @@ authenticateUser = (e, username, password) => {
       showInstantMessenger: !this.state.showInstantMessenger
     }, this.getCurrentUser());
     document.cookie = 'X-Authorization=' + data.jwt + '; path=/';
-    console.log(document.cookie)
   })
 }
 
