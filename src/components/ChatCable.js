@@ -5,8 +5,9 @@ const ChatCable = ({ message, handleReceivedMessage }) => {
   return (
     <Fragment>
           <ActionCableConsumer
-            channel={{ channel: 'ChatsChannel'}}
-            onReceived={response => {console.log(response); handleReceivedMessage(response)}}
+            channel={{ channel: 'MessagesChannel'}}
+            onReceived={handleReceivedMessage}
+            onConnected={console.log("connected to messages channel")}
           >
           <p>{message}</p>
           </ ActionCableConsumer>

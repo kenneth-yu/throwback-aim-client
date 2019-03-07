@@ -28,7 +28,7 @@ class FriendsList extends React.Component{
          <div className="handle"><LoginHeader showHandler={this.props.showHandler} chatName="Friends List"/></div>
          <FriendsListNavbar/>
          <FriendsListLogo/>
-         <FriendsListBox handleUserStatus={this.props.handleUserStatus} newChatHandler={this.props.newChatHandler}/>
+         <FriendsListBox newChatHandler={this.props.newChatHandler}/>
          <img className="new-message-btn" alt="" src={NewMessage} height="15%" width="15%"/>
          <img className="group-message-btn" alt="" src={GroupMessage} height="15%" width="15%"/>
          <img className="search-btn"alt="" src={Search} height="15%" width="15%"/>

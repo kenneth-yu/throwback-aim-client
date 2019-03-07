@@ -11,7 +11,6 @@ class MessageForm extends React.Component {
   }
 
 
-
   render(){
     let {value, addedMessage, onChange} = this.props
     const disabledClass = !value.length ? 'message-form__submit--disabled' : null;

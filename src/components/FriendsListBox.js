@@ -38,6 +38,23 @@ class FriendsListBox extends React.Component{
     })
   }
 
+  handleUserStatus = (response) => {
+    // console.log(response)
+    // const { type } = response
+    // switch(type) {
+    //   case "DC_USER":
+    //     let offlineFriends = [...this.state.offlineFriends, response.user];
+    //     this.setState({ offlineFriends })
+    //     break;
+    //   case "CO_USER":
+    //     let onlineFriends = [...this.state.onlineFriends, response.user];
+    //     this.setState({ onlineFriends })
+    //     break;
+    //   default:
+    //     return null;
+    // }
+  }
+
 
   render(){
     let onlineList = this.state.onlineFriends.map(oneCategory => <FriendsCategories key={oneCategory.name} newChatHandler={this.props.newChatHandler} friendslistcount={this.state.categories[0].friends.length} count={this.state.onlineFriends.length} category={oneCategory}
@@ -47,11 +64,12 @@ class FriendsListBox extends React.Component{
       <div className="friends-list-box">
       <ActionCableConsumer
           channel={{ channel: 'PresenceChannel' }}
-          onReceived={(response) => this.props.handleUserStatus(response)}
-        />
+          onReceived={(response) => this.handleUserStatus(response)}
+        >
+        </ActionCableConsumer>
         <ul className="categories">
-          {onlineList}
-          {offlineList}
+        {onlineList}
+        {offlineList}
         </ul>
       </div>
     )

@@ -34,7 +34,7 @@ class App extends Component {
       if (user.error){
         return <Redirect to="/" />;
       } else {
-        this.setState({ user }, () => {this.getUserConversations()})
+        this.getUserConversations()
       }
     })
   }
@@ -114,25 +114,8 @@ authenticateUser = (e, username, password) => {
 }
 
 
-handleUserStatus = (response) => {
-  const { type } = response
-  switch(type) {
-    case "DC_USER":
-      let currentUsers = [...this.state.users];
-      let currentUser = currentUsers.find(u => u.id === response.user);
-      break;
-    case "CO_USER":
-      let currentUsers2 = [...this.state.users];
-      let currentUser2 = currentUsers2.find(u => u.id === response.user);
-      break;
-    default:
-      return null;
-  }
-}
-
   render() {
-    console.log(this.state.user.id)
-    console.log(document.cookie)
+    console.log("this.state.user.id", this.state.user.id)
     return (
       <div>
       <Switch>
@@ -140,7 +123,7 @@ handleUserStatus = (response) => {
       </Switch>
       {this.state.showInstantMessenger ?
       <InstantMessenger user_id={this.state.user.id}  showHandler={this.showHandler} authenticateUser={this.authenticateUser}/> :
-      <FriendsList handleUserStatus={this.handleUserStatus} newChatHandler={this.newChatHandler} showHandler={this.showHandler} />}
+      <FriendsList newChatHandler={this.newChatHandler} showHandler={this.showHandler} />}
       {this.state.showInstantMessengerChat ? <InstantMessengerChat user_id={this.state.user.id} user={this.state.user} conversations={this.state.conversations} clickedFriend={this.state.clickedFriend} showHandler={this.showHandler}/> : null}
       </div>
     )
