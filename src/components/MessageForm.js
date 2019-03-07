@@ -10,12 +10,12 @@ class MessageForm extends React.Component {
     this.audio = new Audio(SendMessage)
   }
 
-  fetchWS(route, dataObj){
-    fetch(`${API_ROOT}/${route}`, {
-      method: 'POST',
-      headers: HEADERS,
-      body: JSON.stringify(dataObj)
-    })
+  fetchWS(dataObj){
+    // fetch(`${API_ROOT}chats`, {
+    //   method: 'POST',
+    //   headers: HEADERS,
+    //   body: JSON.stringify(dataObj)
+    // })
   }
 
   render(){

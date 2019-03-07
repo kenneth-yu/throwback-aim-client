@@ -46,7 +46,6 @@ class App extends Component {
     })
     .then(res => res.json())
     .then(convos => {
-      console.log(!!convos)
       // let userConvos = !!convos && convos.filter(convo => convo.user_id === this.state.user.id)
       // this.setState({ conversations: userConvos })
     })
@@ -111,6 +110,7 @@ authenticateUser = (e, username, password) => {
       showInstantMessenger: !this.state.showInstantMessenger
     }, this.getCurrentUser());
     document.cookie = 'X-Authorization=' + data.jwt + '; path=/';
+    console.log(document.cookie)
   })
 }
 
@@ -147,9 +147,9 @@ handleUserStatus = (response) => {
         <Route path="/signup" component={CreateUser} />
       </Switch>
       {this.state.showInstantMessenger ?
-      <InstantMessenger user_id={this.state.user.id} conversations={this.state.conversations} showHandler={this.showHandler} authenticateUser={this.authenticateUser}/> :
+      <InstantMessenger user_id={this.state.user.id} showHandler={this.showHandler} authenticateUser={this.authenticateUser}/> :
       <FriendsList handleUserStatus={this.handleUserStatus} newChatHandler={this.newChatHandler} showHandler={this.showHandler} />}
-      {this.state.showInstantMessengerChat ? <InstantMessengerChat user_id={this.state.user.id} clickedFriend={this.state.clickedFriend} showHandler={this.showHandler}/> : null}
+      {this.state.showInstantMessengerChat ? <InstantMessengerChat conversations={this.state.conversations} user_id={this.state.user.id} clickedFriend={this.state.clickedFriend} showHandler={this.showHandler}/> : null}
       </div>
     )
   }

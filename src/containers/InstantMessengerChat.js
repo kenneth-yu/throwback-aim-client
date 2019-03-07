@@ -28,7 +28,7 @@ class InstantMessengerChat extends React.Component {
   }
 
   componentDidMount() {
-    fetch(`${API_ROOT}user_conversations`, {
+    fetch(`${API_ROOT}chats`, {
       method: `GET`,
       headers: HEADERS
     })
@@ -36,24 +36,34 @@ class InstantMessengerChat extends React.Component {
     .then(chats => {this.sendMessagesToData(chats)})
   }
 
+
+
   sendMessagesToData = (chats) => {
-    console.log(this.props.clickedFriend)
-    let currentUserChats = chats.filter(oneChat => parseInt(oneChat.friendship.user1) === this.props.user_id || parseInt(oneChat.friendship.user2) === this.props.user_id)
+    let currentUserChats = !!chats && chats.filter(oneChat => parseInt(oneChat.friendship.user1) === this.props.user_id || parseInt(oneChat.friendship.user2) === this.props.user_id)
     let currentMessages = currentUserChats.filter(oneChat => parseInt(oneChat.friendship.user1) === this.props.clickedFriend.id || parseInt(oneChat.friendship.user2) === this.props.clickedFriend.id)
-    console.log(currentUserChats)
-    console.log(currentMessages)
     this.setState({
       chats: chats,
       allCurrentUserChats:currentUserChats,
       currentMessages: currentMessages
-    })
-    currentMessages[0].messages.forEach(chat => this.setState({ data: [...this.state.data, chat.content]}))
+    }, () => {this.getCurrentMessages()})
+  }
+
+  getCurrentMessages = () => {
+    console.log(this.state.currentMessages)
+    // this.state.currentMessages[0].messages.forEach(chat => this.setState({ data: [...this.state.data, chat.content]}))
   }
 
 
 
   addedMessage = (e, val) => {
+    console.log("e", e)
+    console.log("val", val)
     e.preventDefault();
+    // fetch(`${API_ROOT}chats`, {
+    //   method: 'POST',
+    //   headers: HEADERS,
+    //   body: JSON.stringify(dataObj)
+    // })
     // this.state.data.push(val);
     // fetch('http://localhost:3000/messages', {
     //   method: 'POST',
@@ -85,8 +95,8 @@ class InstantMessengerChat extends React.Component {
 
 
   render() {
+    console.log(this.props.clickedFriend)
     const { data, chatName, screenName, value} = this.state;
-    console.log(this.props.conversations)
     return (
       <Draggable
         handle=".handle"
