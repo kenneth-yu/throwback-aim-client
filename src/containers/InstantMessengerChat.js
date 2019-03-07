@@ -23,7 +23,8 @@ class InstantMessengerChat extends React.Component {
       chats: [],
       message: "",
       allCurrentUserChats:[],
-      currentMessages:[]
+      currentMessages:[],
+      chatid: 0
     };
   }
 
@@ -37,8 +38,8 @@ class InstantMessengerChat extends React.Component {
   }
 
   sendMessagesToData = (chats) => {
-    console.log("chats", chats)
-    console.log("props.user.id", this.props.user.user.id)
+    // console.log(chats)
+    // console.log(this.props.user.user.id)
     let currentUserChats = chats.filter(oneChat => parseInt(oneChat.friendship.user1) === this.props.user.user.id || parseInt(oneChat.friendship.user2) === this.props.user.user.id)
     let currentMessages = currentUserChats.filter(oneChat => parseInt(oneChat.friendship.user1) === this.props.clickedFriend.id || parseInt(oneChat.friendship.user2) === this.props.clickedFriend.id)
     console.log("currentUserChats", currentUserChats)
@@ -46,7 +47,8 @@ class InstantMessengerChat extends React.Component {
     this.setState({
       chats: chats,
       allCurrentUserChats:currentUserChats,
-      currentMessages: currentMessages
+      currentMessages: currentMessages,
+      chatid:0
     })
     if (currentMessages.length > 0) {
       currentMessages[0].messages.forEach(chat => this.setState({ data: [...this.state.data, chat.content]}))
@@ -63,30 +65,14 @@ class InstantMessengerChat extends React.Component {
       body: JSON.stringify({
         content: val,
         user_id: this.props.user.user.id,
-        // chat_id: something
+        chat_id: this.state.currentMessages[0].messages[0].chat_id
       })
-    })
-    // fetch(`${API_ROOT}chats`, {
-    //   method: 'POST',
-    //   headers: HEADERS,
-    //   body: JSON.stringify(dataObj)
-    // })
-    // this.state.data.push(val);
-    // fetch('http://localhost:3000/messages', {
-    //   method: 'POST',
-    //   headers: HEADERS,
-    //   body: JSON.stringify({
-    //     content: val,
-    //     user_id: this.props.user_id
-    //   })
-    // }).then(res => res.json()).then(data => {
-      this.setState({
-        // data: [...this.state.data, data.content],
-        data: [...this.state.data, val],
-        value: ""
-      })
-    // }).catch(console.log("failed"))
-  };
+    }).then(res=>res.json())
+    .then(data=> this.setState({
+      data: [...this.state.data, data.content],
+      value: ""
+    }))
+  }
 
   handleChange = (event) => {
     this.setState({value: event.target.value});
