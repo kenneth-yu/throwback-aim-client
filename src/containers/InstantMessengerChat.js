@@ -76,6 +76,7 @@ class InstantMessengerChat extends React.Component {
   };
 
   handleReceivedMessage = (message) => {
+    console.log(message)
     this.setState(state => {
       return {
         message

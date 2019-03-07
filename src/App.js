@@ -143,9 +143,9 @@ handleUserStatus = (response) => {
         <Route path="/signup" component={CreateUser} />
       </Switch>
       {this.state.showInstantMessenger ?
-      <InstantMessenger user_id={this.state.user.id} conversations={this.state.conversations} showHandler={this.showHandler} authenticateUser={this.authenticateUser}/> :
+      <InstantMessenger user_id={this.state.user.id}  showHandler={this.showHandler} authenticateUser={this.authenticateUser}/> :
       <FriendsList handleUserStatus={this.handleUserStatus} newChatHandler={this.newChatHandler} showHandler={this.showHandler} />}
-      {this.state.showInstantMessengerChat ? <InstantMessengerChat user_id={this.state.user.id} user={this.state.user} clickedFriend={this.state.clickedFriend} showHandler={this.showHandler}/> : null}
+      {this.state.showInstantMessengerChat ? <InstantMessengerChat user_id={this.state.user.id} user={this.state.user} conversations={this.state.conversations} clickedFriend={this.state.clickedFriend} showHandler={this.showHandler}/> : null}
       </div>
     )
   }
