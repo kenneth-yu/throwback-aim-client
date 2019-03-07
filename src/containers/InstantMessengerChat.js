@@ -16,7 +16,7 @@ class InstantMessengerChat extends React.Component {
     super(props);
     this.state = {
       chatName: this.props.clickedFriend.username, //GET this information
-      screenName: "AorKennyKiller", //GET this information
+      screenName: this.props.user.username, //GET this information
       data: [],
       value: "",
       messageId: 0,
@@ -39,6 +39,7 @@ class InstantMessengerChat extends React.Component {
 
 
   sendMessagesToData = (chats) => {
+<<<<<<< HEAD
     let currentUserChats = !!chats && chats.filter(oneChat => parseInt(oneChat.friendship.user1) === this.props.user_id || parseInt(oneChat.friendship.user2) === this.props.user_id)
     let currentMessages = currentUserChats.filter(oneChat => parseInt(oneChat.friendship.user1) === this.props.clickedFriend.id || parseInt(oneChat.friendship.user2) === this.props.clickedFriend.id)
     this.setState({
@@ -51,6 +52,19 @@ class InstantMessengerChat extends React.Component {
   getCurrentMessages = () => {
     console.log(this.state.currentMessages)
     // this.state.currentMessages[0].messages.forEach(chat => this.setState({ data: [...this.state.data, chat.content]}))
+=======
+    console.log(chats)
+    let currentUserChats = chats.filter(oneChat => oneChat.user_id === this.props.user_id)
+    // let currentMessages = currentUserChats.filter(oneChat => parseInt(oneChat.friendship.user1) === this.props.clickedFriend.id || parseInt(oneChat.friendship.user2) === this.props.clickedFriend.id)
+    console.log(currentUserChats)
+    // console.log(currentMessages)
+    this.setState({
+      chats: chats,
+      allCurrentUserChats:currentUserChats,
+      // currentMessages: currentMessages
+    })
+    // currentMessages[0].messages.forEach(chat => this.setState({ data: [...this.state.data, chat.content]}))
+>>>>>>> c5ed042702035fc2b997ec99c93e3de69856b280
   }
 
 
@@ -86,6 +100,7 @@ class InstantMessengerChat extends React.Component {
   };
 
   handleReceivedMessage = (message) => {
+    console.log(message)
     this.setState(state => {
       return {
         message
