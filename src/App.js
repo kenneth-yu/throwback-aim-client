@@ -102,7 +102,7 @@ authenticateUser = (e, username, password) => {
   })
   .then(resp => resp.json())
   .then(data => {
-
+    console.log(data)
     localStorage.setItem("token", data.jwt);
     this.setState({
       user: data.user ,
@@ -120,18 +120,10 @@ handleUserStatus = (response) => {
     case "DC_USER":
       let currentUsers = [...this.state.users];
       let currentUser = currentUsers.find(u => u.id === response.user);
-      if (currentUser) {
-        currentUser.logged_in = false
-        this.setState({ users: currentUsers })
-      }
       break;
     case "CO_USER":
       let currentUsers2 = [...this.state.users];
       let currentUser2 = currentUsers2.find(u => u.id === response.user);
-      if(currentUser2){
-        currentUser2.logged_in = true
-        this.setState({ users: currentUsers2 })
-      }
       break;
     default:
       return null;
@@ -139,7 +131,7 @@ handleUserStatus = (response) => {
 }
 
   render() {
-    console.log(this.state.users)
+    console.log(document.cookie)
     return (
       <div>
       <Switch>

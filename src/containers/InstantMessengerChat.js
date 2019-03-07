@@ -28,7 +28,7 @@ class InstantMessengerChat extends React.Component {
   }
 
   componentDidMount() {
-    fetch(`${API_ROOT}user_conversations`, {
+    fetch(`${API_ROOT}chats`, {
       method: `GET`,
       headers: HEADERS
     })
@@ -40,14 +40,14 @@ class InstantMessengerChat extends React.Component {
     console.log(this.props.clickedFriend)
     let currentUserChats = chats.filter(oneChat => parseInt(oneChat.friendship.user1) === this.props.user_id || parseInt(oneChat.friendship.user2) === this.props.user_id)
     let currentMessages = currentUserChats.filter(oneChat => parseInt(oneChat.friendship.user1) === this.props.clickedFriend.id || parseInt(oneChat.friendship.user2) === this.props.clickedFriend.id)
-    console.log(currentUserChats)
-    console.log(currentMessages)
     this.setState({
       chats: chats,
       allCurrentUserChats:currentUserChats,
       currentMessages: currentMessages
     })
-    currentMessages[0].messages.forEach(chat => this.setState({ data: [...this.state.data, chat.content]}))
+    if (currentMessages.length > 0) {
+      currentMessages[0].messages.forEach(chat => this.setState({ data: [...this.state.data, chat.content]}))
+    }
   }
 
 
@@ -90,6 +90,7 @@ class InstantMessengerChat extends React.Component {
 
   handleReceivedMessage = (message) => {
     console.log(message)
+    console.log("handleReceivedMessage called")
     this.setState(state => {
       return {
         message
@@ -100,7 +101,6 @@ class InstantMessengerChat extends React.Component {
 
   render() {
     const { data, chatName, screenName, value} = this.state;
-    console.log(this.props.conversations)
     return (
       <Draggable
         handle=".handle"
@@ -115,7 +115,7 @@ class InstantMessengerChat extends React.Component {
           <div className="handle"><ChatHeader showHandler={this.props.showHandler} chatName={chatName} /></div>
             <Navbar  chatName={chatName} />
             <StreamChats sender_id={this.props.user_id} receiver={this.props.clickedFriend}/>
-            <MessageList handleReceivedMessage={this.handleReceivedMessage} allCurrentUserChats={this.state.allCurrentUserChats} user_id={this.props.user_id} messageData={data} screenName={screenName} chatName={chatName} />
+            <MessageList handleReceivedMessage={this.handleReceivedMessage} message={this.state.message} allCurrentUserChats={this.state.allCurrentUserChats} user_id={this.props.user_id} messageData={data} screenName={screenName} chatName={chatName} />
             <CustomizeRow />
             <MessageForm sender_id={this.props.user_id} addedMessage={this.addedMessage} onChange={this.handleChange} value={value}/>
 

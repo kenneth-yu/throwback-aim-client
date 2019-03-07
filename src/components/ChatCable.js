@@ -1,20 +1,15 @@
 import React, { Fragment } from 'react';
-import { ActionCable } from 'react-actioncable-provider';
+import { ActionCableConsumer } from 'react-actioncable-provider';
 
-const ChatCable = ({ allCurrentUserChats, handleReceivedMessage }) => {
+const ChatCable = ({ message, handleReceivedMessage }) => {
   return (
     <Fragment>
-      {allCurrentUserChats.map(conversation => {
-        return (
-          <ActionCable
-            key={conversation.chat_id}
-            channel={{ channel: 'ChatsChannel', conversation: conversation.id }}
-            onReceived={handleReceivedMessage}
+          <ActionCableConsumer
+            channel={{ channel: 'ChatsChannel'}}
+            onReceived={response => {console.log(response); handleReceivedMessage(response)}}
           >
-          <p>{"this.props.message"}</p>
-          </ActionCableConsumer>
-        );
-      })}
+          <p>{message}</p>
+          </ ActionCableConsumer>
     </Fragment>
   );
 };
