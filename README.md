@@ -17,4 +17,4 @@ Currently Features:
 
 * Ruby on Rails Backend (https://github.com/kenneth-yu/throwback-aim-server)
 
-This appliction relies on Action Cable and Websockets to instantly send messages cross browser in real-time. 
+This application relies on Action Cable and Websockets to instantly send messages cross browser in real-time. 
